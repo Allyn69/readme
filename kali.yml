@@ -1,0 +1,27 @@
+# Copyright salsa-ci-team and others
+# SPDX-License-Identifier: FSFAP
+# Copying and distribution of this file, with or without modification, are
+# permitted in any medium without royalty provided the copyright notice and
+# this notice are preserved. This file is offered as-is, without any warranty.
+
+include:
+  - https://gitlab.com/kalilinux/tools/kali-ci-pipeline/raw/master/salsa-ci.yml
+  - https://gitlab.com/kalilinux/tools/kali-ci-pipeline/raw/master/pipeline-jobs.yml
+
+variables:
+  VENDOR: 'kali'
+  RELEASE: 'kali-dev'
+  SALSA_CI_MIRROR: 'http://http.kali.org/kali'
+  SALSA_CI_COMPONENTS: 'main contrib non-free'
+  SALSA_CI_IMAGES: 'registry.gitlab.com/kalilinux/tools/kali-ci-pipeline'
+  SALSA_CI_AUTOPKGTEST_LXC: 'https://gitlab.com/kalilinux/tools/kali-ci-autopkgtest-lxc'
+  SALSA_CI_PIUPARTS_ARGS: '--defaults debian --keyring /usr/share/keyrings/kali-archive-keyring.gpg'
+  SALSA_CI_DISABLE_BLHC: 1
+  - https://gitlab.com/kalilinux/tools/kali-ci-pipeline/raw/master/vars/kali.yml
+
+variables:
+  SALSA_CI_DISABLE_BLHC: 1
+  SALSA_CI_REPROTEST_ENABLE_DIFFOSCOPE: 1
+
+reprotest:
+  allow_failure: true
