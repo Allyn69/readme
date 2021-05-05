@@ -1,0 +1,915 @@
+<html>
+<head>
+    <title>Allyn69/kali-nethunter</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/stylesheets/index.css" rel="stylesheet"/>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/echarts@4.2.1/dist/echarts-en.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119015333-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119015333-3');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1677442094360914",
+        enable_page_level_ads: true
+    });
+</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <style>
+        .xxxad .adsbygoogle{
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<div>
+<div class="headBar">
+    <div class="arrow_box">
+        <a id="list-link-head" style="display: block" href=""><div class="list-of-arrow">profile</div></a>
+        <a  id="viewpoint-link-head"style="display: block" href=""><div class="list-of-arrow">viewpoint</div></a>
+    </div>
+    <a href="/" class="my-love-gitmemory">
+    </a>
+    <div class="join-with-github" id="header-bar-login">
+        <!--<div style="width: 40px;height: 40px;margin-top: -10px;"><img style="border-radius: 50%;" width="100%" src=""></div>-->
+        <!--<a onclick="location.href='/api/login?href='+location.href">join with Github</a>-->
+    </div>
+    <div class="g-search" style="float: right;height: 67px;width: 255px;margin-right: 20px;box-sizing: border-box">
+        <input class="search-input" placeholder="gitMemory :)" id="search-input2" style="font-size: 18px;width: 200px;padding-bottom: 5px">
+        <div class="search-btn" id="search-btn2" style="width: 30px;height: 30px;background-color: #ff7f27;"><i class="fa fa-search" aria-hidden="true"></i></div>
+        <div class="recommend-header-list">
+            <a class="item-recommend" href="/nodejs/node">
+                <img src="https://raw.githubusercontent.com/github/explore/fd96fceccf8c42c99cbe29cf0f8dcc4736fcb85a/topics/nodejs/nodejs.png" width="40px">
+                <span>nodejs</span>
+            </a>
+            <a class="item-recommend" href="/vuejs/vue">
+                <img src="https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/vue/vue.png" width="40px">
+                <span>vue.js</span>
+            </a>
+            <a class="item-recommend" href="/ry">
+                <img class="user" src="https://avatars2.githubusercontent.com/u/80?s=400&v=4" width="40px">
+                <span>ry ( nodejs Founder ) </span>
+            </a>
+            <a class="item-recommend" href="/facebook/react">
+                <img  src="https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/react/react.png" width="40px">
+                <span>React</span>
+            </a>
+            <a class="item-recommend" href="/rust-lang/rust">
+                <img style="background-color: white;border-radius: 50%" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/rust/rust.png" width="40px">
+                <span>Rust</span>
+            </a>
+            <a class="item-recommend" href="/tensorflow/tensorflow">
+                <img  src="https://avatars0.githubusercontent.com/u/15658638?s=200&v=4" width="40px">
+                <span>tensorflow</span>
+            </a>
+            <a class="item-recommend" href="/spring-projects/spring-boot">
+                <img style="border-radius: 50%" src="https://avatars0.githubusercontent.com/u/317776?s=200&v=4" width="40px">
+                <span>Spring Boot</span>
+            </a>
+            <a class="item-recommend" href="/golang/go">
+                <img style="border-radius: 50%;background-color: white" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/go/go.png" width="40px">
+                <span>golang</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="echarts-warpper" style="padding-top: 20px;height: 300px">
+    <div id="echarts-box1"></div>
+    <div id="echarts-box2"></div>
+    <div id="echarts-box3"></div>
+</div>
+<div style="width: 100%;background-color: #333333;position: relative;
+    z-index: 100;">
+<div id='star-chart' style='cursor: pointer; width: 840px; height:300px;margin: 0 auto;position: relative;z-index: 1000'></div>
+</div>
+<div class="yinying-ab-beijing" style="top:685px">
+</div>
+<div class="black-box"></div>
+<div class="xxxad" style="width: 780px;
+    margin:0 auto;position: relative;z-index: 200;border-radius: 10px;box-sizing: border-box;overflow: hidden;
+margin-bottom: 30px;margin-top: 14px;">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- 项目横幅广告 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-fe+7+3q-89+jg"
+         data-ad-client="ca-pub-1677442094360914"
+         data-ad-slot="4660818054"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>    <!-- 项目横幅广告 -->
+</div>
+<div class="repo-content" style="background-color: #dfdfdf;width: 780px">
+    <p class="repo-name">Allyn69/kali-nethunter</p>
+    <p class="repo-desc">The Kali NetHunter Project</p>
+    <p class="repo-desc"><a
+                href="https://github.com/offensive-security/kali-nethunter/wiki">https://github.com/offensive-security/kali-nethunter/wiki</a>
+    </p>
+    <a class="repo-owner" href="/Allyn69">
+        <span class="issue-create-name">Allyn69</span><img
+                data-lazy-src="https://avatars2.githubusercontent.com/u/46991653?v=4" class="iseeue-create-user-img">
+    </a>
+</div>
+<div class="comments-box">
+    <p class="comments-title">viewpoint</p>
+    <div class="comments-list" id="vue-comment-list" style="display: none">
+        <div class="comment-item" v-for="item in list">
+            <div class="comments-avatar">
+                <img :src="item.userAvatar" width="100%" height="100%"/>
+            </div>
+            <div class="comments-item-content">
+                <p>
+                    <strong><a class="comment-user-name-0" :href="'/'+item.userName"
+                               v-text="item.userName"></a></strong>
+                    <span style="margin-left: 20px;color: #333" v-text="item.updatedAt"></span>
+                    <span v-if="userInfo&&userInfo.login===item.userName" class="delete-comment-icon" @click="deleteById(item.id)"><i class="fa fa-trash-o"></i></span>
+                </p>
+                <div class="md comment-item-content-1" v-html="item.markDataHtml">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comments-viewpoints-add-box">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        Express your opinions freely and help others including your future self
+    </div>
+    <div class="comments-editor">
+        <textarea id="editor">Markdown here!</textarea>
+        <button type="submit" class="comments-commit">submit</button>
+    </div>
+</div>
+<div class="issue-other-list-warp" style="width: 780px;margin: 0 auto;position: relative">
+    <p style="font-size: 20px;" >Issues rank</p>
+    
+    
+        <span style="padding-top: 10px;display:block;color: #bfbfbf">
+                No questions were found.
+            </span>
+    
+</div>
+<div class="data-list-map" id="data-list-map"></div>
+<div class="contributors-list">
+    <p><i class="fa fa-github-alt" aria-hidden="true"></i> contributors (According to the first 100)</p>
+    <div class="cont-people-list">
+        
+        <a href="/binkybear" alt="binkybear" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/5126674?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">binkybear</span>
+            </div>
+        </a>
+        
+        <a href="/jcadduono" alt="jcadduono" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/12227399?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">jcadduono</span>
+            </div>
+        </a>
+        
+        <a href="/nathanakalish" alt="nathanakalish" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/4107799?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">nathanakalish</span>
+            </div>
+        </a>
+        
+        <a href="/Re4son" alt="Re4son" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/12821486?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">Re4son</span>
+            </div>
+        </a>
+        
+        <a href="/jmingov" alt="jmingov" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/783338?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">jmingov</span>
+            </div>
+        </a>
+        
+        <a href="/unknownpwn" alt="unknownpwn" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/45597631?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">unknownpwn</span>
+            </div>
+        </a>
+        
+        <a href="/kimocoder" alt="kimocoder" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/4252297?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">kimocoder</span>
+            </div>
+        </a>
+        
+        <a href="/semsevens" alt="semsevens" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/13362968?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">semsevens</span>
+            </div>
+        </a>
+        
+        <a href="/thel3l" alt="thel3l" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/9950250?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">thel3l</span>
+            </div>
+        </a>
+        
+        <a href="/discipuloosho" alt="discipuloosho" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/6654063?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">discipuloosho</span>
+            </div>
+        </a>
+        
+        <a href="/offensive-security" alt="offensive-security" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/2352090?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">offensive-security</span>
+            </div>
+        </a>
+        
+        <a href="/inferillum" alt="inferillum" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars2.githubusercontent.com/u/7547593?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">inferillum</span>
+            </div>
+        </a>
+        
+        <a href="/n2aws" alt="n2aws" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars2.githubusercontent.com/u/803978?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">n2aws</span>
+            </div>
+        </a>
+        
+        <a href="/thedroidgeek" alt="thedroidgeek" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/11878924?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">thedroidgeek</span>
+            </div>
+        </a>
+        
+        <a href="/DeadSquirrel01" alt="DeadSquirrel01" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/19819679?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">DeadSquirrel01</span>
+            </div>
+        </a>
+        
+        <a href="/l0rdg3x" alt="l0rdg3x" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/5904197?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">l0rdg3x</span>
+            </div>
+        </a>
+        
+        <a href="/asjadsyed" alt="asjadsyed" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars2.githubusercontent.com/u/13244874?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">asjadsyed</span>
+            </div>
+        </a>
+        
+        <a href="/nullsign" alt="nullsign" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/1612437?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">nullsign</span>
+            </div>
+        </a>
+        
+        <a href="/TheNain38" alt="TheNain38" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/13149763?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">TheNain38</span>
+            </div>
+        </a>
+        
+        <a href="/npavlidis" alt="npavlidis" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/3973277?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">npavlidis</span>
+            </div>
+        </a>
+        
+        <a href="/S1CAR1US" alt="S1CAR1US" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/9968731?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">S1CAR1US</span>
+            </div>
+        </a>
+        
+        <a href="/cquick97" alt="cquick97" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/3959645?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">cquick97</span>
+            </div>
+        </a>
+        
+        <a href="/Divyangchauhan" alt="Divyangchauhan" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/1810006?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">Divyangchauhan</span>
+            </div>
+        </a>
+        
+        <a href="/ChaosCat" alt="ChaosCat" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/10373239?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">ChaosCat</span>
+            </div>
+        </a>
+        
+        <a href="/dragonGR" alt="dragonGR" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/10290836?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">dragonGR</span>
+            </div>
+        </a>
+        
+        <a href="/lavanoid" alt="lavanoid" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/4705167?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">lavanoid</span>
+            </div>
+        </a>
+        
+        <a href="/jeffhammett" alt="jeffhammett" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/4993252?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">jeffhammett</span>
+            </div>
+        </a>
+        
+        <a href="/zaventh" alt="zaventh" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars1.githubusercontent.com/u/669283?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">zaventh</span>
+            </div>
+        </a>
+        
+        <a href="/miketweaver" alt="miketweaver" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/5581855?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">miketweaver</span>
+            </div>
+        </a>
+        
+        <a href="/zanezam" alt="zanezam" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars0.githubusercontent.com/u/2743278?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">zanezam</span>
+            </div>
+        </a>
+        
+        <a href="/kjy00302" alt="kjy00302" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars2.githubusercontent.com/u/8146440?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">kjy00302</span>
+            </div>
+        </a>
+        
+        <a href="/stoofman" alt="stoofman" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars2.githubusercontent.com/u/13588081?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">stoofman</span>
+            </div>
+        </a>
+        
+        <a href="/viperblood" alt="viperblood" style="display: block">
+            <div class="contr-item-warp">
+                <img data-lazy-src="https://avatars3.githubusercontent.com/u/9406398?v=4" style="width: 100px;height: 100px;"/>
+                <span class="cont-name-span">viperblood</span>
+            </div>
+        </a>
+        
+    </div>
+</div>
+
+<script type="text/javascript">
+  var data = [{"id":249418321,"node_id":"MDEwOlJlcG9zaXRvcnkyNDk0MTgzMjE=","name":"kali-nethunter","full_name":"Allyn69/kali-nethunter","private":false,"owner":{"login":"Allyn69","id":46991653,"node_id":"MDQ6VXNlcjQ2OTkxNjUz","avatar_url":"https://avatars2.githubusercontent.com/u/46991653?v=4","gravatar_id":"","url":"https://api.github.com/users/Allyn69","html_url":"https://github.com/Allyn69","followers_url":"https://api.github.com/users/Allyn69/followers","following_url":"https://api.github.com/users/Allyn69/following{/other_user}","gists_url":"https://api.github.com/users/Allyn69/gists{/gist_id}","starred_url":"https://api.github.com/users/Allyn69/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Allyn69/subscriptions","organizations_url":"https://api.github.com/users/Allyn69/orgs","repos_url":"https://api.github.com/users/Allyn69/repos","events_url":"https://api.github.com/users/Allyn69/events{/privacy}","received_events_url":"https://api.github.com/users/Allyn69/received_events","type":"User","site_admin":false},"html_url":"https://github.com/Allyn69/kali-nethunter","description":"The Kali NetHunter Project","fork":true,"url":"https://api.github.com/repos/Allyn69/kali-nethunter","forks_url":"https://api.github.com/repos/Allyn69/kali-nethunter/forks","keys_url":"https://api.github.com/repos/Allyn69/kali-nethunter/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Allyn69/kali-nethunter/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Allyn69/kali-nethunter/teams","hooks_url":"https://api.github.com/repos/Allyn69/kali-nethunter/hooks","issue_events_url":"https://api.github.com/repos/Allyn69/kali-nethunter/issues/events{/number}","events_url":"https://api.github.com/repos/Allyn69/kali-nethunter/events","assignees_url":"https://api.github.com/repos/Allyn69/kali-nethunter/assignees{/user}","branches_url":"https://api.github.com/repos/Allyn69/kali-nethunter/branches{/branch}","tags_url":"https://api.github.com/repos/Allyn69/kali-nethunter/tags","blobs_url":"https://api.github.com/repos/Allyn69/kali-nethunter/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Allyn69/kali-nethunter/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Allyn69/kali-nethunter/git/refs{/sha}","trees_url":"https://api.github.com/repos/Allyn69/kali-nethunter/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Allyn69/kali-nethunter/statuses/{sha}","languages_url":"https://api.github.com/repos/Allyn69/kali-nethunter/languages","stargazers_url":"https://api.github.com/repos/Allyn69/kali-nethunter/stargazers","contributors_url":"https://api.github.com/repos/Allyn69/kali-nethunter/contributors","subscribers_url":"https://api.github.com/repos/Allyn69/kali-nethunter/subscribers","subscription_url":"https://api.github.com/repos/Allyn69/kali-nethunter/subscription","commits_url":"https://api.github.com/repos/Allyn69/kali-nethunter/commits{/sha}","git_commits_url":"https://api.github.com/repos/Allyn69/kali-nethunter/git/commits{/sha}","comments_url":"https://api.github.com/repos/Allyn69/kali-nethunter/comments{/number}","issue_comment_url":"https://api.github.com/repos/Allyn69/kali-nethunter/issues/comments{/number}","contents_url":"https://api.github.com/repos/Allyn69/kali-nethunter/contents/{+path}","compare_url":"https://api.github.com/repos/Allyn69/kali-nethunter/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Allyn69/kali-nethunter/merges","archive_url":"https://api.github.com/repos/Allyn69/kali-nethunter/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Allyn69/kali-nethunter/downloads","issues_url":"https://api.github.com/repos/Allyn69/kali-nethunter/issues{/number}","pulls_url":"https://api.github.com/repos/Allyn69/kali-nethunter/pulls{/number}","milestones_url":"https://api.github.com/repos/Allyn69/kali-nethunter/milestones{/number}","notifications_url":"https://api.github.com/repos/Allyn69/kali-nethunter/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Allyn69/kali-nethunter/labels{/name}","releases_url":"https://api.github.com/repos/Allyn69/kali-nethunter/releases{/id}","deployments_url":"https://api.github.com/repos/Allyn69/kali-nethunter/deployments","created_at":"2020-03-23T11:58:11Z","updated_at":"2020-03-23T11:58:13Z","pushed_at":"2019-04-25T09:01:43Z","git_url":"git://github.com/Allyn69/kali-nethunter.git","ssh_url":"git@github.com:Allyn69/kali-nethunter.git","clone_url":"https://github.com/Allyn69/kali-nethunter.git","svn_url":"https://github.com/Allyn69/kali-nethunter","homepage":"https://github.com/offensive-security/kali-nethunter/wiki","size":2220013,"stargazers_count":0,"watchers_count":0,"language":null,"has_issues":false,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true},"temp_clone_token":"","parent":{"id":24257743,"node_id":"MDEwOlJlcG9zaXRvcnkyNDI1Nzc0Mw==","name":"kali-nethunter","full_name":"offensive-security/kali-nethunter","private":false,"owner":{"login":"offensive-security","id":2352090,"node_id":"MDQ6VXNlcjIzNTIwOTA=","avatar_url":"https://avatars3.githubusercontent.com/u/2352090?v=4","gravatar_id":"","url":"https://api.github.com/users/offensive-security","html_url":"https://github.com/offensive-security","followers_url":"https://api.github.com/users/offensive-security/followers","following_url":"https://api.github.com/users/offensive-security/following{/other_user}","gists_url":"https://api.github.com/users/offensive-security/gists{/gist_id}","starred_url":"https://api.github.com/users/offensive-security/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/offensive-security/subscriptions","organizations_url":"https://api.github.com/users/offensive-security/orgs","repos_url":"https://api.github.com/users/offensive-security/repos","events_url":"https://api.github.com/users/offensive-security/events{/privacy}","received_events_url":"https://api.github.com/users/offensive-security/received_events","type":"User","site_admin":false},"html_url":"https://github.com/offensive-security/kali-nethunter","description":"The Kali NetHunter Project","fork":false,"url":"https://api.github.com/repos/offensive-security/kali-nethunter","forks_url":"https://api.github.com/repos/offensive-security/kali-nethunter/forks","keys_url":"https://api.github.com/repos/offensive-security/kali-nethunter/keys{/key_id}","collaborators_url":"https://api.github.com/repos/offensive-security/kali-nethunter/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/offensive-security/kali-nethunter/teams","hooks_url":"https://api.github.com/repos/offensive-security/kali-nethunter/hooks","issue_events_url":"https://api.github.com/repos/offensive-security/kali-nethunter/issues/events{/number}","events_url":"https://api.github.com/repos/offensive-security/kali-nethunter/events","assignees_url":"https://api.github.com/repos/offensive-security/kali-nethunter/assignees{/user}","branches_url":"https://api.github.com/repos/offensive-security/kali-nethunter/branches{/branch}","tags_url":"https://api.github.com/repos/offensive-security/kali-nethunter/tags","blobs_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/refs{/sha}","trees_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/trees{/sha}","statuses_url":"https://api.github.com/repos/offensive-security/kali-nethunter/statuses/{sha}","languages_url":"https://api.github.com/repos/offensive-security/kali-nethunter/languages","stargazers_url":"https://api.github.com/repos/offensive-security/kali-nethunter/stargazers","contributors_url":"https://api.github.com/repos/offensive-security/kali-nethunter/contributors","subscribers_url":"https://api.github.com/repos/offensive-security/kali-nethunter/subscribers","subscription_url":"https://api.github.com/repos/offensive-security/kali-nethunter/subscription","commits_url":"https://api.github.com/repos/offensive-security/kali-nethunter/commits{/sha}","git_commits_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/commits{/sha}","comments_url":"https://api.github.com/repos/offensive-security/kali-nethunter/comments{/number}","issue_comment_url":"https://api.github.com/repos/offensive-security/kali-nethunter/issues/comments{/number}","contents_url":"https://api.github.com/repos/offensive-security/kali-nethunter/contents/{+path}","compare_url":"https://api.github.com/repos/offensive-security/kali-nethunter/compare/{base}...{head}","merges_url":"https://api.github.com/repos/offensive-security/kali-nethunter/merges","archive_url":"https://api.github.com/repos/offensive-security/kali-nethunter/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/offensive-security/kali-nethunter/downloads","issues_url":"https://api.github.com/repos/offensive-security/kali-nethunter/issues{/number}","pulls_url":"https://api.github.com/repos/offensive-security/kali-nethunter/pulls{/number}","milestones_url":"https://api.github.com/repos/offensive-security/kali-nethunter/milestones{/number}","notifications_url":"https://api.github.com/repos/offensive-security/kali-nethunter/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/offensive-security/kali-nethunter/labels{/name}","releases_url":"https://api.github.com/repos/offensive-security/kali-nethunter/releases{/id}","deployments_url":"https://api.github.com/repos/offensive-security/kali-nethunter/deployments","created_at":"2014-09-20T08:24:15Z","updated_at":"2020-04-12T12:15:53Z","pushed_at":"2019-04-25T09:01:43Z","git_url":"git://github.com/offensive-security/kali-nethunter.git","ssh_url":"git@github.com:offensive-security/kali-nethunter.git","clone_url":"https://github.com/offensive-security/kali-nethunter.git","svn_url":"https://github.com/offensive-security/kali-nethunter","homepage":"https://github.com/offensive-security/kali-nethunter/wiki","size":2220013,"stargazers_count":2574,"watchers_count":2574,"language":null,"has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":859,"mirror_url":null,"archived":true,"disabled":false,"open_issues_count":29,"license":null,"forks":859,"open_issues":29,"watchers":2574,"default_branch":"master"},"source":{"id":24257743,"node_id":"MDEwOlJlcG9zaXRvcnkyNDI1Nzc0Mw==","name":"kali-nethunter","full_name":"offensive-security/kali-nethunter","private":false,"owner":{"login":"offensive-security","id":2352090,"node_id":"MDQ6VXNlcjIzNTIwOTA=","avatar_url":"https://avatars3.githubusercontent.com/u/2352090?v=4","gravatar_id":"","url":"https://api.github.com/users/offensive-security","html_url":"https://github.com/offensive-security","followers_url":"https://api.github.com/users/offensive-security/followers","following_url":"https://api.github.com/users/offensive-security/following{/other_user}","gists_url":"https://api.github.com/users/offensive-security/gists{/gist_id}","starred_url":"https://api.github.com/users/offensive-security/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/offensive-security/subscriptions","organizations_url":"https://api.github.com/users/offensive-security/orgs","repos_url":"https://api.github.com/users/offensive-security/repos","events_url":"https://api.github.com/users/offensive-security/events{/privacy}","received_events_url":"https://api.github.com/users/offensive-security/received_events","type":"User","site_admin":false},"html_url":"https://github.com/offensive-security/kali-nethunter","description":"The Kali NetHunter Project","fork":false,"url":"https://api.github.com/repos/offensive-security/kali-nethunter","forks_url":"https://api.github.com/repos/offensive-security/kali-nethunter/forks","keys_url":"https://api.github.com/repos/offensive-security/kali-nethunter/keys{/key_id}","collaborators_url":"https://api.github.com/repos/offensive-security/kali-nethunter/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/offensive-security/kali-nethunter/teams","hooks_url":"https://api.github.com/repos/offensive-security/kali-nethunter/hooks","issue_events_url":"https://api.github.com/repos/offensive-security/kali-nethunter/issues/events{/number}","events_url":"https://api.github.com/repos/offensive-security/kali-nethunter/events","assignees_url":"https://api.github.com/repos/offensive-security/kali-nethunter/assignees{/user}","branches_url":"https://api.github.com/repos/offensive-security/kali-nethunter/branches{/branch}","tags_url":"https://api.github.com/repos/offensive-security/kali-nethunter/tags","blobs_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/refs{/sha}","trees_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/trees{/sha}","statuses_url":"https://api.github.com/repos/offensive-security/kali-nethunter/statuses/{sha}","languages_url":"https://api.github.com/repos/offensive-security/kali-nethunter/languages","stargazers_url":"https://api.github.com/repos/offensive-security/kali-nethunter/stargazers","contributors_url":"https://api.github.com/repos/offensive-security/kali-nethunter/contributors","subscribers_url":"https://api.github.com/repos/offensive-security/kali-nethunter/subscribers","subscription_url":"https://api.github.com/repos/offensive-security/kali-nethunter/subscription","commits_url":"https://api.github.com/repos/offensive-security/kali-nethunter/commits{/sha}","git_commits_url":"https://api.github.com/repos/offensive-security/kali-nethunter/git/commits{/sha}","comments_url":"https://api.github.com/repos/offensive-security/kali-nethunter/comments{/number}","issue_comment_url":"https://api.github.com/repos/offensive-security/kali-nethunter/issues/comments{/number}","contents_url":"https://api.github.com/repos/offensive-security/kali-nethunter/contents/{+path}","compare_url":"https://api.github.com/repos/offensive-security/kali-nethunter/compare/{base}...{head}","merges_url":"https://api.github.com/repos/offensive-security/kali-nethunter/merges","archive_url":"https://api.github.com/repos/offensive-security/kali-nethunter/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/offensive-security/kali-nethunter/downloads","issues_url":"https://api.github.com/repos/offensive-security/kali-nethunter/issues{/number}","pulls_url":"https://api.github.com/repos/offensive-security/kali-nethunter/pulls{/number}","milestones_url":"https://api.github.com/repos/offensive-security/kali-nethunter/milestones{/number}","notifications_url":"https://api.github.com/repos/offensive-security/kali-nethunter/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/offensive-security/kali-nethunter/labels{/name}","releases_url":"https://api.github.com/repos/offensive-security/kali-nethunter/releases{/id}","deployments_url":"https://api.github.com/repos/offensive-security/kali-nethunter/deployments","created_at":"2014-09-20T08:24:15Z","updated_at":"2020-04-12T12:15:53Z","pushed_at":"2019-04-25T09:01:43Z","git_url":"git://github.com/offensive-security/kali-nethunter.git","ssh_url":"git@github.com:offensive-security/kali-nethunter.git","clone_url":"https://github.com/offensive-security/kali-nethunter.git","svn_url":"https://github.com/offensive-security/kali-nethunter","homepage":"https://github.com/offensive-security/kali-nethunter/wiki","size":2220013,"stargazers_count":2574,"watchers_count":2574,"language":null,"has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":859,"mirror_url":null,"archived":true,"disabled":false,"open_issues_count":29,"license":null,"forks":859,"open_issues":29,"watchers":2574,"default_branch":"master"},"network_count":859,"subscribers_count":0},{"total_count":0,"incomplete_results":false,"items":[]},{},[{"login":"binkybear","id":5126674,"node_id":"MDQ6VXNlcjUxMjY2NzQ=","avatar_url":"https://avatars0.githubusercontent.com/u/5126674?v=4","gravatar_id":"","url":"https://api.github.com/users/binkybear","html_url":"https://github.com/binkybear","followers_url":"https://api.github.com/users/binkybear/followers","following_url":"https://api.github.com/users/binkybear/following{/other_user}","gists_url":"https://api.github.com/users/binkybear/gists{/gist_id}","starred_url":"https://api.github.com/users/binkybear/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/binkybear/subscriptions","organizations_url":"https://api.github.com/users/binkybear/orgs","repos_url":"https://api.github.com/users/binkybear/repos","events_url":"https://api.github.com/users/binkybear/events{/privacy}","received_events_url":"https://api.github.com/users/binkybear/received_events","type":"User","site_admin":false,"contributions":581},{"login":"jcadduono","id":12227399,"node_id":"MDQ6VXNlcjEyMjI3Mzk5","avatar_url":"https://avatars0.githubusercontent.com/u/12227399?v=4","gravatar_id":"","url":"https://api.github.com/users/jcadduono","html_url":"https://github.com/jcadduono","followers_url":"https://api.github.com/users/jcadduono/followers","following_url":"https://api.github.com/users/jcadduono/following{/other_user}","gists_url":"https://api.github.com/users/jcadduono/gists{/gist_id}","starred_url":"https://api.github.com/users/jcadduono/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jcadduono/subscriptions","organizations_url":"https://api.github.com/users/jcadduono/orgs","repos_url":"https://api.github.com/users/jcadduono/repos","events_url":"https://api.github.com/users/jcadduono/events{/privacy}","received_events_url":"https://api.github.com/users/jcadduono/received_events","type":"User","site_admin":false,"contributions":263},{"login":"nathanakalish","id":4107799,"node_id":"MDQ6VXNlcjQxMDc3OTk=","avatar_url":"https://avatars1.githubusercontent.com/u/4107799?v=4","gravatar_id":"","url":"https://api.github.com/users/nathanakalish","html_url":"https://github.com/nathanakalish","followers_url":"https://api.github.com/users/nathanakalish/followers","following_url":"https://api.github.com/users/nathanakalish/following{/other_user}","gists_url":"https://api.github.com/users/nathanakalish/gists{/gist_id}","starred_url":"https://api.github.com/users/nathanakalish/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/nathanakalish/subscriptions","organizations_url":"https://api.github.com/users/nathanakalish/orgs","repos_url":"https://api.github.com/users/nathanakalish/repos","events_url":"https://api.github.com/users/nathanakalish/events{/privacy}","received_events_url":"https://api.github.com/users/nathanakalish/received_events","type":"User","site_admin":false,"contributions":82},{"login":"Re4son","id":12821486,"node_id":"MDQ6VXNlcjEyODIxNDg2","avatar_url":"https://avatars0.githubusercontent.com/u/12821486?v=4","gravatar_id":"","url":"https://api.github.com/users/Re4son","html_url":"https://github.com/Re4son","followers_url":"https://api.github.com/users/Re4son/followers","following_url":"https://api.github.com/users/Re4son/following{/other_user}","gists_url":"https://api.github.com/users/Re4son/gists{/gist_id}","starred_url":"https://api.github.com/users/Re4son/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Re4son/subscriptions","organizations_url":"https://api.github.com/users/Re4son/orgs","repos_url":"https://api.github.com/users/Re4son/repos","events_url":"https://api.github.com/users/Re4son/events{/privacy}","received_events_url":"https://api.github.com/users/Re4son/received_events","type":"User","site_admin":false,"contributions":17},{"login":"jmingov","id":783338,"node_id":"MDQ6VXNlcjc4MzMzOA==","avatar_url":"https://avatars3.githubusercontent.com/u/783338?v=4","gravatar_id":"","url":"https://api.github.com/users/jmingov","html_url":"https://github.com/jmingov","followers_url":"https://api.github.com/users/jmingov/followers","following_url":"https://api.github.com/users/jmingov/following{/other_user}","gists_url":"https://api.github.com/users/jmingov/gists{/gist_id}","starred_url":"https://api.github.com/users/jmingov/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jmingov/subscriptions","organizations_url":"https://api.github.com/users/jmingov/orgs","repos_url":"https://api.github.com/users/jmingov/repos","events_url":"https://api.github.com/users/jmingov/events{/privacy}","received_events_url":"https://api.github.com/users/jmingov/received_events","type":"User","site_admin":false,"contributions":15},{"login":"unknownpwn","id":45597631,"node_id":"MDQ6VXNlcjQ1NTk3NjMx","avatar_url":"https://avatars3.githubusercontent.com/u/45597631?v=4","gravatar_id":"","url":"https://api.github.com/users/unknownpwn","html_url":"https://github.com/unknownpwn","followers_url":"https://api.github.com/users/unknownpwn/followers","following_url":"https://api.github.com/users/unknownpwn/following{/other_user}","gists_url":"https://api.github.com/users/unknownpwn/gists{/gist_id}","starred_url":"https://api.github.com/users/unknownpwn/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/unknownpwn/subscriptions","organizations_url":"https://api.github.com/users/unknownpwn/orgs","repos_url":"https://api.github.com/users/unknownpwn/repos","events_url":"https://api.github.com/users/unknownpwn/events{/privacy}","received_events_url":"https://api.github.com/users/unknownpwn/received_events","type":"User","site_admin":false,"contributions":9},{"login":"kimocoder","id":4252297,"node_id":"MDQ6VXNlcjQyNTIyOTc=","avatar_url":"https://avatars3.githubusercontent.com/u/4252297?v=4","gravatar_id":"","url":"https://api.github.com/users/kimocoder","html_url":"https://github.com/kimocoder","followers_url":"https://api.github.com/users/kimocoder/followers","following_url":"https://api.github.com/users/kimocoder/following{/other_user}","gists_url":"https://api.github.com/users/kimocoder/gists{/gist_id}","starred_url":"https://api.github.com/users/kimocoder/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/kimocoder/subscriptions","organizations_url":"https://api.github.com/users/kimocoder/orgs","repos_url":"https://api.github.com/users/kimocoder/repos","events_url":"https://api.github.com/users/kimocoder/events{/privacy}","received_events_url":"https://api.github.com/users/kimocoder/received_events","type":"User","site_admin":false,"contributions":9},{"login":"semsevens","id":13362968,"node_id":"MDQ6VXNlcjEzMzYyOTY4","avatar_url":"https://avatars1.githubusercontent.com/u/13362968?v=4","gravatar_id":"","url":"https://api.github.com/users/semsevens","html_url":"https://github.com/semsevens","followers_url":"https://api.github.com/users/semsevens/followers","following_url":"https://api.github.com/users/semsevens/following{/other_user}","gists_url":"https://api.github.com/users/semsevens/gists{/gist_id}","starred_url":"https://api.github.com/users/semsevens/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/semsevens/subscriptions","organizations_url":"https://api.github.com/users/semsevens/orgs","repos_url":"https://api.github.com/users/semsevens/repos","events_url":"https://api.github.com/users/semsevens/events{/privacy}","received_events_url":"https://api.github.com/users/semsevens/received_events","type":"User","site_admin":false,"contributions":6},{"login":"thel3l","id":9950250,"node_id":"MDQ6VXNlcjk5NTAyNTA=","avatar_url":"https://avatars1.githubusercontent.com/u/9950250?v=4","gravatar_id":"","url":"https://api.github.com/users/thel3l","html_url":"https://github.com/thel3l","followers_url":"https://api.github.com/users/thel3l/followers","following_url":"https://api.github.com/users/thel3l/following{/other_user}","gists_url":"https://api.github.com/users/thel3l/gists{/gist_id}","starred_url":"https://api.github.com/users/thel3l/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/thel3l/subscriptions","organizations_url":"https://api.github.com/users/thel3l/orgs","repos_url":"https://api.github.com/users/thel3l/repos","events_url":"https://api.github.com/users/thel3l/events{/privacy}","received_events_url":"https://api.github.com/users/thel3l/received_events","type":"User","site_admin":false,"contributions":6},{"login":"discipuloosho","id":6654063,"node_id":"MDQ6VXNlcjY2NTQwNjM=","avatar_url":"https://avatars3.githubusercontent.com/u/6654063?v=4","gravatar_id":"","url":"https://api.github.com/users/discipuloosho","html_url":"https://github.com/discipuloosho","followers_url":"https://api.github.com/users/discipuloosho/followers","following_url":"https://api.github.com/users/discipuloosho/following{/other_user}","gists_url":"https://api.github.com/users/discipuloosho/gists{/gist_id}","starred_url":"https://api.github.com/users/discipuloosho/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/discipuloosho/subscriptions","organizations_url":"https://api.github.com/users/discipuloosho/orgs","repos_url":"https://api.github.com/users/discipuloosho/repos","events_url":"https://api.github.com/users/discipuloosho/events{/privacy}","received_events_url":"https://api.github.com/users/discipuloosho/received_events","type":"User","site_admin":false,"contributions":5},{"login":"offensive-security","id":2352090,"node_id":"MDQ6VXNlcjIzNTIwOTA=","avatar_url":"https://avatars3.githubusercontent.com/u/2352090?v=4","gravatar_id":"","url":"https://api.github.com/users/offensive-security","html_url":"https://github.com/offensive-security","followers_url":"https://api.github.com/users/offensive-security/followers","following_url":"https://api.github.com/users/offensive-security/following{/other_user}","gists_url":"https://api.github.com/users/offensive-security/gists{/gist_id}","starred_url":"https://api.github.com/users/offensive-security/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/offensive-security/subscriptions","organizations_url":"https://api.github.com/users/offensive-security/orgs","repos_url":"https://api.github.com/users/offensive-security/repos","events_url":"https://api.github.com/users/offensive-security/events{/privacy}","received_events_url":"https://api.github.com/users/offensive-security/received_events","type":"User","site_admin":false,"contributions":5},{"login":"inferillum","id":7547593,"node_id":"MDQ6VXNlcjc1NDc1OTM=","avatar_url":"https://avatars2.githubusercontent.com/u/7547593?v=4","gravatar_id":"","url":"https://api.github.com/users/inferillum","html_url":"https://github.com/inferillum","followers_url":"https://api.github.com/users/inferillum/followers","following_url":"https://api.github.com/users/inferillum/following{/other_user}","gists_url":"https://api.github.com/users/inferillum/gists{/gist_id}","starred_url":"https://api.github.com/users/inferillum/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/inferillum/subscriptions","organizations_url":"https://api.github.com/users/inferillum/orgs","repos_url":"https://api.github.com/users/inferillum/repos","events_url":"https://api.github.com/users/inferillum/events{/privacy}","received_events_url":"https://api.github.com/users/inferillum/received_events","type":"User","site_admin":false,"contributions":4},{"login":"n2aws","id":803978,"node_id":"MDQ6VXNlcjgwMzk3OA==","avatar_url":"https://avatars2.githubusercontent.com/u/803978?v=4","gravatar_id":"","url":"https://api.github.com/users/n2aws","html_url":"https://github.com/n2aws","followers_url":"https://api.github.com/users/n2aws/followers","following_url":"https://api.github.com/users/n2aws/following{/other_user}","gists_url":"https://api.github.com/users/n2aws/gists{/gist_id}","starred_url":"https://api.github.com/users/n2aws/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/n2aws/subscriptions","organizations_url":"https://api.github.com/users/n2aws/orgs","repos_url":"https://api.github.com/users/n2aws/repos","events_url":"https://api.github.com/users/n2aws/events{/privacy}","received_events_url":"https://api.github.com/users/n2aws/received_events","type":"User","site_admin":false,"contributions":4},{"login":"thedroidgeek","id":11878924,"node_id":"MDQ6VXNlcjExODc4OTI0","avatar_url":"https://avatars3.githubusercontent.com/u/11878924?v=4","gravatar_id":"","url":"https://api.github.com/users/thedroidgeek","html_url":"https://github.com/thedroidgeek","followers_url":"https://api.github.com/users/thedroidgeek/followers","following_url":"https://api.github.com/users/thedroidgeek/following{/other_user}","gists_url":"https://api.github.com/users/thedroidgeek/gists{/gist_id}","starred_url":"https://api.github.com/users/thedroidgeek/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/thedroidgeek/subscriptions","organizations_url":"https://api.github.com/users/thedroidgeek/orgs","repos_url":"https://api.github.com/users/thedroidgeek/repos","events_url":"https://api.github.com/users/thedroidgeek/events{/privacy}","received_events_url":"https://api.github.com/users/thedroidgeek/received_events","type":"User","site_admin":false,"contributions":4},{"login":"DeadSquirrel01","id":19819679,"node_id":"MDQ6VXNlcjE5ODE5Njc5","avatar_url":"https://avatars1.githubusercontent.com/u/19819679?v=4","gravatar_id":"","url":"https://api.github.com/users/DeadSquirrel01","html_url":"https://github.com/DeadSquirrel01","followers_url":"https://api.github.com/users/DeadSquirrel01/followers","following_url":"https://api.github.com/users/DeadSquirrel01/following{/other_user}","gists_url":"https://api.github.com/users/DeadSquirrel01/gists{/gist_id}","starred_url":"https://api.github.com/users/DeadSquirrel01/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/DeadSquirrel01/subscriptions","organizations_url":"https://api.github.com/users/DeadSquirrel01/orgs","repos_url":"https://api.github.com/users/DeadSquirrel01/repos","events_url":"https://api.github.com/users/DeadSquirrel01/events{/privacy}","received_events_url":"https://api.github.com/users/DeadSquirrel01/received_events","type":"User","site_admin":false,"contributions":3},{"login":"l0rdg3x","id":5904197,"node_id":"MDQ6VXNlcjU5MDQxOTc=","avatar_url":"https://avatars1.githubusercontent.com/u/5904197?v=4","gravatar_id":"","url":"https://api.github.com/users/l0rdg3x","html_url":"https://github.com/l0rdg3x","followers_url":"https://api.github.com/users/l0rdg3x/followers","following_url":"https://api.github.com/users/l0rdg3x/following{/other_user}","gists_url":"https://api.github.com/users/l0rdg3x/gists{/gist_id}","starred_url":"https://api.github.com/users/l0rdg3x/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/l0rdg3x/subscriptions","organizations_url":"https://api.github.com/users/l0rdg3x/orgs","repos_url":"https://api.github.com/users/l0rdg3x/repos","events_url":"https://api.github.com/users/l0rdg3x/events{/privacy}","received_events_url":"https://api.github.com/users/l0rdg3x/received_events","type":"User","site_admin":false,"contributions":3},{"login":"asjadsyed","id":13244874,"node_id":"MDQ6VXNlcjEzMjQ0ODc0","avatar_url":"https://avatars2.githubusercontent.com/u/13244874?v=4","gravatar_id":"","url":"https://api.github.com/users/asjadsyed","html_url":"https://github.com/asjadsyed","followers_url":"https://api.github.com/users/asjadsyed/followers","following_url":"https://api.github.com/users/asjadsyed/following{/other_user}","gists_url":"https://api.github.com/users/asjadsyed/gists{/gist_id}","starred_url":"https://api.github.com/users/asjadsyed/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/asjadsyed/subscriptions","organizations_url":"https://api.github.com/users/asjadsyed/orgs","repos_url":"https://api.github.com/users/asjadsyed/repos","events_url":"https://api.github.com/users/asjadsyed/events{/privacy}","received_events_url":"https://api.github.com/users/asjadsyed/received_events","type":"User","site_admin":false,"contributions":2},{"login":"nullsign","id":1612437,"node_id":"MDQ6VXNlcjE2MTI0Mzc=","avatar_url":"https://avatars3.githubusercontent.com/u/1612437?v=4","gravatar_id":"","url":"https://api.github.com/users/nullsign","html_url":"https://github.com/nullsign","followers_url":"https://api.github.com/users/nullsign/followers","following_url":"https://api.github.com/users/nullsign/following{/other_user}","gists_url":"https://api.github.com/users/nullsign/gists{/gist_id}","starred_url":"https://api.github.com/users/nullsign/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/nullsign/subscriptions","organizations_url":"https://api.github.com/users/nullsign/orgs","repos_url":"https://api.github.com/users/nullsign/repos","events_url":"https://api.github.com/users/nullsign/events{/privacy}","received_events_url":"https://api.github.com/users/nullsign/received_events","type":"User","site_admin":false,"contributions":2},{"login":"TheNain38","id":13149763,"node_id":"MDQ6VXNlcjEzMTQ5NzYz","avatar_url":"https://avatars0.githubusercontent.com/u/13149763?v=4","gravatar_id":"","url":"https://api.github.com/users/TheNain38","html_url":"https://github.com/TheNain38","followers_url":"https://api.github.com/users/TheNain38/followers","following_url":"https://api.github.com/users/TheNain38/following{/other_user}","gists_url":"https://api.github.com/users/TheNain38/gists{/gist_id}","starred_url":"https://api.github.com/users/TheNain38/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/TheNain38/subscriptions","organizations_url":"https://api.github.com/users/TheNain38/orgs","repos_url":"https://api.github.com/users/TheNain38/repos","events_url":"https://api.github.com/users/TheNain38/events{/privacy}","received_events_url":"https://api.github.com/users/TheNain38/received_events","type":"User","site_admin":false,"contributions":2},{"login":"npavlidis","id":3973277,"node_id":"MDQ6VXNlcjM5NzMyNzc=","avatar_url":"https://avatars3.githubusercontent.com/u/3973277?v=4","gravatar_id":"","url":"https://api.github.com/users/npavlidis","html_url":"https://github.com/npavlidis","followers_url":"https://api.github.com/users/npavlidis/followers","following_url":"https://api.github.com/users/npavlidis/following{/other_user}","gists_url":"https://api.github.com/users/npavlidis/gists{/gist_id}","starred_url":"https://api.github.com/users/npavlidis/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/npavlidis/subscriptions","organizations_url":"https://api.github.com/users/npavlidis/orgs","repos_url":"https://api.github.com/users/npavlidis/repos","events_url":"https://api.github.com/users/npavlidis/events{/privacy}","received_events_url":"https://api.github.com/users/npavlidis/received_events","type":"User","site_admin":false,"contributions":2},{"login":"S1CAR1US","id":9968731,"node_id":"MDQ6VXNlcjk5Njg3MzE=","avatar_url":"https://avatars3.githubusercontent.com/u/9968731?v=4","gravatar_id":"","url":"https://api.github.com/users/S1CAR1US","html_url":"https://github.com/S1CAR1US","followers_url":"https://api.github.com/users/S1CAR1US/followers","following_url":"https://api.github.com/users/S1CAR1US/following{/other_user}","gists_url":"https://api.github.com/users/S1CAR1US/gists{/gist_id}","starred_url":"https://api.github.com/users/S1CAR1US/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/S1CAR1US/subscriptions","organizations_url":"https://api.github.com/users/S1CAR1US/orgs","repos_url":"https://api.github.com/users/S1CAR1US/repos","events_url":"https://api.github.com/users/S1CAR1US/events{/privacy}","received_events_url":"https://api.github.com/users/S1CAR1US/received_events","type":"User","site_admin":false,"contributions":2},{"login":"cquick97","id":3959645,"node_id":"MDQ6VXNlcjM5NTk2NDU=","avatar_url":"https://avatars0.githubusercontent.com/u/3959645?v=4","gravatar_id":"","url":"https://api.github.com/users/cquick97","html_url":"https://github.com/cquick97","followers_url":"https://api.github.com/users/cquick97/followers","following_url":"https://api.github.com/users/cquick97/following{/other_user}","gists_url":"https://api.github.com/users/cquick97/gists{/gist_id}","starred_url":"https://api.github.com/users/cquick97/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/cquick97/subscriptions","organizations_url":"https://api.github.com/users/cquick97/orgs","repos_url":"https://api.github.com/users/cquick97/repos","events_url":"https://api.github.com/users/cquick97/events{/privacy}","received_events_url":"https://api.github.com/users/cquick97/received_events","type":"User","site_admin":false,"contributions":1},{"login":"Divyangchauhan","id":1810006,"node_id":"MDQ6VXNlcjE4MTAwMDY=","avatar_url":"https://avatars0.githubusercontent.com/u/1810006?v=4","gravatar_id":"","url":"https://api.github.com/users/Divyangchauhan","html_url":"https://github.com/Divyangchauhan","followers_url":"https://api.github.com/users/Divyangchauhan/followers","following_url":"https://api.github.com/users/Divyangchauhan/following{/other_user}","gists_url":"https://api.github.com/users/Divyangchauhan/gists{/gist_id}","starred_url":"https://api.github.com/users/Divyangchauhan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Divyangchauhan/subscriptions","organizations_url":"https://api.github.com/users/Divyangchauhan/orgs","repos_url":"https://api.github.com/users/Divyangchauhan/repos","events_url":"https://api.github.com/users/Divyangchauhan/events{/privacy}","received_events_url":"https://api.github.com/users/Divyangchauhan/received_events","type":"User","site_admin":false,"contributions":1},{"login":"ChaosCat","id":10373239,"node_id":"MDQ6VXNlcjEwMzczMjM5","avatar_url":"https://avatars0.githubusercontent.com/u/10373239?v=4","gravatar_id":"","url":"https://api.github.com/users/ChaosCat","html_url":"https://github.com/ChaosCat","followers_url":"https://api.github.com/users/ChaosCat/followers","following_url":"https://api.github.com/users/ChaosCat/following{/other_user}","gists_url":"https://api.github.com/users/ChaosCat/gists{/gist_id}","starred_url":"https://api.github.com/users/ChaosCat/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ChaosCat/subscriptions","organizations_url":"https://api.github.com/users/ChaosCat/orgs","repos_url":"https://api.github.com/users/ChaosCat/repos","events_url":"https://api.github.com/users/ChaosCat/events{/privacy}","received_events_url":"https://api.github.com/users/ChaosCat/received_events","type":"User","site_admin":false,"contributions":1},{"login":"dragonGR","id":10290836,"node_id":"MDQ6VXNlcjEwMjkwODM2","avatar_url":"https://avatars0.githubusercontent.com/u/10290836?v=4","gravatar_id":"","url":"https://api.github.com/users/dragonGR","html_url":"https://github.com/dragonGR","followers_url":"https://api.github.com/users/dragonGR/followers","following_url":"https://api.github.com/users/dragonGR/following{/other_user}","gists_url":"https://api.github.com/users/dragonGR/gists{/gist_id}","starred_url":"https://api.github.com/users/dragonGR/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/dragonGR/subscriptions","organizations_url":"https://api.github.com/users/dragonGR/orgs","repos_url":"https://api.github.com/users/dragonGR/repos","events_url":"https://api.github.com/users/dragonGR/events{/privacy}","received_events_url":"https://api.github.com/users/dragonGR/received_events","type":"User","site_admin":false,"contributions":1},{"login":"lavanoid","id":4705167,"node_id":"MDQ6VXNlcjQ3MDUxNjc=","avatar_url":"https://avatars1.githubusercontent.com/u/4705167?v=4","gravatar_id":"","url":"https://api.github.com/users/lavanoid","html_url":"https://github.com/lavanoid","followers_url":"https://api.github.com/users/lavanoid/followers","following_url":"https://api.github.com/users/lavanoid/following{/other_user}","gists_url":"https://api.github.com/users/lavanoid/gists{/gist_id}","starred_url":"https://api.github.com/users/lavanoid/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/lavanoid/subscriptions","organizations_url":"https://api.github.com/users/lavanoid/orgs","repos_url":"https://api.github.com/users/lavanoid/repos","events_url":"https://api.github.com/users/lavanoid/events{/privacy}","received_events_url":"https://api.github.com/users/lavanoid/received_events","type":"User","site_admin":false,"contributions":1},{"login":"jeffhammett","id":4993252,"node_id":"MDQ6VXNlcjQ5OTMyNTI=","avatar_url":"https://avatars1.githubusercontent.com/u/4993252?v=4","gravatar_id":"","url":"https://api.github.com/users/jeffhammett","html_url":"https://github.com/jeffhammett","followers_url":"https://api.github.com/users/jeffhammett/followers","following_url":"https://api.github.com/users/jeffhammett/following{/other_user}","gists_url":"https://api.github.com/users/jeffhammett/gists{/gist_id}","starred_url":"https://api.github.com/users/jeffhammett/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jeffhammett/subscriptions","organizations_url":"https://api.github.com/users/jeffhammett/orgs","repos_url":"https://api.github.com/users/jeffhammett/repos","events_url":"https://api.github.com/users/jeffhammett/events{/privacy}","received_events_url":"https://api.github.com/users/jeffhammett/received_events","type":"User","site_admin":false,"contributions":1},{"login":"zaventh","id":669283,"node_id":"MDQ6VXNlcjY2OTI4Mw==","avatar_url":"https://avatars1.githubusercontent.com/u/669283?v=4","gravatar_id":"","url":"https://api.github.com/users/zaventh","html_url":"https://github.com/zaventh","followers_url":"https://api.github.com/users/zaventh/followers","following_url":"https://api.github.com/users/zaventh/following{/other_user}","gists_url":"https://api.github.com/users/zaventh/gists{/gist_id}","starred_url":"https://api.github.com/users/zaventh/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/zaventh/subscriptions","organizations_url":"https://api.github.com/users/zaventh/orgs","repos_url":"https://api.github.com/users/zaventh/repos","events_url":"https://api.github.com/users/zaventh/events{/privacy}","received_events_url":"https://api.github.com/users/zaventh/received_events","type":"User","site_admin":false,"contributions":1},{"login":"miketweaver","id":5581855,"node_id":"MDQ6VXNlcjU1ODE4NTU=","avatar_url":"https://avatars3.githubusercontent.com/u/5581855?v=4","gravatar_id":"","url":"https://api.github.com/users/miketweaver","html_url":"https://github.com/miketweaver","followers_url":"https://api.github.com/users/miketweaver/followers","following_url":"https://api.github.com/users/miketweaver/following{/other_user}","gists_url":"https://api.github.com/users/miketweaver/gists{/gist_id}","starred_url":"https://api.github.com/users/miketweaver/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/miketweaver/subscriptions","organizations_url":"https://api.github.com/users/miketweaver/orgs","repos_url":"https://api.github.com/users/miketweaver/repos","events_url":"https://api.github.com/users/miketweaver/events{/privacy}","received_events_url":"https://api.github.com/users/miketweaver/received_events","type":"User","site_admin":false,"contributions":1},{"login":"zanezam","id":2743278,"node_id":"MDQ6VXNlcjI3NDMyNzg=","avatar_url":"https://avatars0.githubusercontent.com/u/2743278?v=4","gravatar_id":"","url":"https://api.github.com/users/zanezam","html_url":"https://github.com/zanezam","followers_url":"https://api.github.com/users/zanezam/followers","following_url":"https://api.github.com/users/zanezam/following{/other_user}","gists_url":"https://api.github.com/users/zanezam/gists{/gist_id}","starred_url":"https://api.github.com/users/zanezam/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/zanezam/subscriptions","organizations_url":"https://api.github.com/users/zanezam/orgs","repos_url":"https://api.github.com/users/zanezam/repos","events_url":"https://api.github.com/users/zanezam/events{/privacy}","received_events_url":"https://api.github.com/users/zanezam/received_events","type":"User","site_admin":false,"contributions":1},{"login":"kjy00302","id":8146440,"node_id":"MDQ6VXNlcjgxNDY0NDA=","avatar_url":"https://avatars2.githubusercontent.com/u/8146440?v=4","gravatar_id":"","url":"https://api.github.com/users/kjy00302","html_url":"https://github.com/kjy00302","followers_url":"https://api.github.com/users/kjy00302/followers","following_url":"https://api.github.com/users/kjy00302/following{/other_user}","gists_url":"https://api.github.com/users/kjy00302/gists{/gist_id}","starred_url":"https://api.github.com/users/kjy00302/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/kjy00302/subscriptions","organizations_url":"https://api.github.com/users/kjy00302/orgs","repos_url":"https://api.github.com/users/kjy00302/repos","events_url":"https://api.github.com/users/kjy00302/events{/privacy}","received_events_url":"https://api.github.com/users/kjy00302/received_events","type":"User","site_admin":false,"contributions":1},{"login":"stoofman","id":13588081,"node_id":"MDQ6VXNlcjEzNTg4MDgx","avatar_url":"https://avatars2.githubusercontent.com/u/13588081?v=4","gravatar_id":"","url":"https://api.github.com/users/stoofman","html_url":"https://github.com/stoofman","followers_url":"https://api.github.com/users/stoofman/followers","following_url":"https://api.github.com/users/stoofman/following{/other_user}","gists_url":"https://api.github.com/users/stoofman/gists{/gist_id}","starred_url":"https://api.github.com/users/stoofman/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/stoofman/subscriptions","organizations_url":"https://api.github.com/users/stoofman/orgs","repos_url":"https://api.github.com/users/stoofman/repos","events_url":"https://api.github.com/users/stoofman/events{/privacy}","received_events_url":"https://api.github.com/users/stoofman/received_events","type":"User","site_admin":false,"contributions":1},{"login":"viperblood","id":9406398,"node_id":"MDQ6VXNlcjk0MDYzOTg=","avatar_url":"https://avatars3.githubusercontent.com/u/9406398?v=4","gravatar_id":"","url":"https://api.github.com/users/viperblood","html_url":"https://github.com/viperblood","followers_url":"https://api.github.com/users/viperblood/followers","following_url":"https://api.github.com/users/viperblood/following{/other_user}","gists_url":"https://api.github.com/users/viperblood/gists{/gist_id}","starred_url":"https://api.github.com/users/viperblood/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/viperblood/subscriptions","organizations_url":"https://api.github.com/users/viperblood/orgs","repos_url":"https://api.github.com/users/viperblood/repos","events_url":"https://api.github.com/users/viperblood/events{/privacy}","received_events_url":"https://api.github.com/users/viperblood/received_events","type":"User","site_admin":false,"contributions":1}],{}]
+  var starList = []
+  var myChart = echarts.init(document.getElementById('echarts-box1'));
+  var option = {
+    title: {
+      textStyle: {
+        color: '#fff'
+      },
+      subtext: 'issue counts',
+      x: 'center'
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+      orient: 'vertical',
+      x: 'left',
+      data: [{value: data[0].open_issues, name: 'open issues'},
+        {value: data[1].total_count, name: 'closed issues'}],
+      textStyle: {
+        color: '#fff'
+      }
+    },
+    color: ['#AEEEEE', '#FFE4B5'],
+    series: [
+      {
+        center: ['50%', '50%'],
+        name: 'events',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        avoidLabelOverlap: false,
+
+        data: [{value: data[0].open_issues, name: 'open issues'},
+          {value: data[1].total_count, name: 'closed issues'}]
+      }
+
+    ]
+  };
+  myChart.setOption(option);
+</script>
+<script>
+  var myChart2 = echarts.init(document.getElementById('echarts-box2'));
+  var language = []
+  for (var l in data[2]) {
+    var item = {}
+    item['value'] = data[2][l]
+    item['name'] = l
+    language.push(item)
+  }
+  var option2 = {
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+      orient: 'vertical',
+      x: 'left',
+      data: language.reverse(),
+      textStyle: {
+        color: '#fff'
+      }
+    },
+    series: [
+      {
+        name: '',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        center: ['50%', '50%'],
+        data: language.sort(function (a, b) {
+          return a.value - b.value;
+        }),
+        animationType: 'scale',
+        animationEasing: 'elasticOut'
+      }
+    ]
+  };
+  myChart2.setOption(option2);
+</script>
+<script>
+  var myChart3 = echarts.init(document.getElementById('echarts-box3'));
+  var stars_count = data[0].stargazers_count
+  var forks_count = data[0].forks_count
+  var watches_count = data[0].subscribers_count
+  var option3 = {
+    backgroundColor: 'rgba(0,0,0,0.0)',
+    tooltip: {},
+    radar: {
+      shape: 'circle',
+      indicator: [
+        {name: 'Star', max: Math.max(stars_count, watches_count, forks_count)},
+        {name: 'Watch', max: Math.max(stars_count, watches_count, forks_count)},
+        {name: 'Fork', max: Math.max(stars_count, watches_count, forks_count)}
+      ],
+      splitLine: {
+        lineStyle: {
+          color: [
+            'rgba(45, 234, 148, 0.1)', 'rgba(45, 234, 148, 0.2)',
+            'rgba(45, 234, 148, 0.4)', 'rgba(45, 234, 148, 0.6)',
+            'rgba(45, 234, 148, 0.8)', 'rgba(45, 234, 148, 1)'
+          ].reverse()
+        }
+      },
+      name: {
+        textStyle: {
+          color: 'rgb(238, 197, 102)'
+        }
+      },
+      splitArea: {
+        show: false
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(45, 234, 148, 0.5)'
+        }
+      }
+    },
+    axisLine: {
+      lineStyle: {
+        color: 'rgba(238, 197, 102, 0.5)'
+      }
+    },
+    series: [{
+      name: 'Activity',
+      type: 'radar',
+      symbolSize: 0,
+      itemStyle: {normal: {areaStyle: {type: 'default'}}},
+      data: [
+        {
+          value: [stars_count, watches_count, forks_count],
+          name: 'Activity'
+        }
+      ],
+      color: 'rgba(40,167,69,1.0)'
+
+    }]
+  };
+  myChart3.setOption(option3);
+</script>
+<script>
+  var datetime_to_date_str = function (datetime) {
+    var year = datetime.getFullYear();
+    var month = left_padding_zero((datetime.getMonth() + 1));
+    var day = left_padding_zero(datetime.getDate());
+    return year + '-' + month + '-' + day;
+  };
+  var get_total_commit_count = function (commits) {
+    var commits_total_count = 0;
+    commits.forEach(function (c) {
+      commits_total_count += c[1];
+    });
+    return commits_total_count;
+  };
+  var commit_data = data[4]
+  var left_padding_zero = function (int) {
+    return int < 10 ? '0' + int : int;
+  };
+  var mill_sec_one_day = 24 * 3600 * 1000;
+  var datetime_to_utc_date = function (datetime) {
+    var year = datetime.getUTCFullYear();
+    var month = left_padding_zero((datetime.getUTCMonth() + 1));
+    var day = left_padding_zero(datetime.getUTCDate());
+    return new Date(year + '-' + month + '-' + day + 'T00:00:00Z');
+  };
+  var myChart4 = echarts.init(document.getElementById('data-list-map'), 'dark');
+  var now = new Date();
+  var today = datetime_to_utc_date(now);
+  var week = now.getUTCDay();
+  var days = 51 * 7 + week + 1;
+  var one_year_ago = new Date(today.getTime() - (days - 1) * mill_sec_one_day);
+
+  var commits = new Array(days);
+  var end = today;
+  var start = one_year_ago;
+  for (var i = 0; i < commits.length; i++) {
+    commits[i] = [new Date(one_year_ago.getTime() + i * mill_sec_one_day).toISOString(), commit_data[Math.floor(i / 7)]['days'][i % 7]];
+  }
+  var option4 =  {
+    backgroundColor: 'rgba(0,0,0,0.0)',
+    title: {
+      subtext: 'Repository Commit Activity: ' + get_total_commit_count(commits) + ' commits during ' + datetime_to_date_str(start) + ' ~ ' + datetime_to_date_str(end),
+      left: '11%',  // 不要用right，否则副标题不显示
+      top: '1%'  // 不要用bottom，否则副标题不显示
+    },
+    tooltip: {
+      position: 'top',
+      formatter: function (params) {
+        return params['marker'] + ' '
+          + params['value'][1] + ' commits on '
+          + echarts.format.formatTime('yyyy-MM-dd', params['value'][0]);
+
+      }
+    },
+    visualMap: {
+      show: false,
+      min: 0,
+      max: 10,
+      calculable: true,
+      orient: 'horizontal',
+      left: 'center',
+      top: 'top',
+      inRange: {
+        color: ['#4A4A4A', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
+      }
+    },
+
+    calendar: [
+      {
+        range: [start, end],
+        left: 'center',
+        cellSize: [15, 15],
+        splitLine: {
+          show: false
+        },
+        itemStyle: {
+          borderWidth: 2,
+          borderColor: '#000'
+        },
+        dayLabel: {
+          show: false
+        },
+        monthLabel: {
+          color: '#fff'
+        },
+        yearLabel: {
+          show: false
+        }
+
+      }],
+
+    series: [{
+      type: 'heatmap',
+      coordinateSystem: 'calendar',
+      calendarIndex: 0,
+      data: commits
+    }]
+
+  };
+
+  myChart4.setOption(option4);
+</script>
+<script>
+    $(document).ready(function () {
+        var display_star_chart = function (data) {
+            var myChart5 = echarts.init(document.getElementById('star-chart'), 'dark');
+
+            var option = {
+                backgroundColor: 'rgba(0,0,0,0.0)',
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function (params) {
+                        return params[0]['marker'] + ' '
+                            + params[0]['value'][1] + ' stars on '
+                            + echarts.format.formatTime('yyyy-MM-dd', params[0]['axisValue']);
+                    }
+                },
+                xAxis: {
+                    type: 'time',
+                    minInterval: mill_sec_one_day,
+                    axisLine: {
+                        onZero: false,
+                        lineStyle: {
+                            width: 3
+                        }
+                    },
+                    axisTick: {
+                        lineStyle: {
+                            width: 2
+                        }
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        formatter: function (value, index) {
+                            return echarts.format.formatTime('yyyy-MM-dd', value);
+                        }
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        show: false,
+                        onZero: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#434343',
+                            type: 'solid',
+                            width: 2
+                        }
+                    },
+                    min: 'dataMin'
+                },
+                visualMap: {
+                    show: false,
+                    dimension: 1,
+                    pieces: [{
+                        lte: 0,
+                        color: 'rgba(40,167,69,1.0)'
+                    }, {
+                        lte: github_returned_max_stars,
+                        color: 'rgba(40,167,69,1.0)'
+                    }, {
+                        gt: github_returned_max_stars,
+                        color: 'rgba(40,167,69,0.3)'
+                    }]
+                },
+                dataZoom: [
+                    {
+                        type: 'slider',
+                        realtime: false,
+                        xAxisIndex: 0,
+                        filterMode: 'filter',
+                        dataBackground: {
+                            areaStyle: {
+                                color: 'rgba(255,255,255,0.5)'
+                            }
+                        },
+                        labelFormatter: function (value) {
+                            return echarts.format.formatTime('yyyy-MM-dd', value);
+                        }
+                    },
+                    {
+                        type: 'inside',
+                        xAxisIndex: 0,
+                        filterMode: 'filter'
+                    }
+                ],
+                series: [
+                    {
+                        id: 'a',
+                        type: 'line',
+                        showSymbol: false,
+                        smooth: true,
+                        data: data,
+                        markPoint: {
+                            silent: true,
+                            data: [
+                                {type: 'max', name: 'Stargazers Now'}
+                            ]
+                        },
+                        color: 'rgba(40,167,69,1.0)'
+                    }
+                ]
+            };
+
+            myChart5.setOption(option);
+        };
+
+        const github_returned_max_stars = 39999;
+        const mill_sec_one_day = 24 * 3600 * 1000;
+
+
+        var render_stargazers = function () {
+            display_star_chart( starList);
+        };
+
+
+        render_stargazers();
+    });
+
+</script>
+
+<script>
+  function goLoc(q) {
+    if (!q) {
+      window.location.href = '/'
+    } else {
+      window.location.href = '/search?q=' + q
+    }
+  }
+
+  $('#search-btn2').click(function () {
+    goLoc($('#search-input2').val())
+  })
+
+  $('#search-input2').bind('keypress', function (event) {
+    if (event.keyCode == 13) {
+      goLoc($('#search-input2').val())
+    }
+  });
+
+  $('.item-recommend').hover(function () {
+    $(this).stop()
+    var width = $(this).find('span').width()
+    $(this).animate({width:(width+70)+"px"});
+    $(this).find('span').fadeIn()
+  },function () {
+    $(this).stop()
+    $(this).animate({width:"40px"});
+    $(this).find('span').fadeOut()
+  })
+</script>
+<script src="https://unpkg.com/myeasylazyload@1.0.3/dist/EasyLazyload.min.js"></script>
+<script>
+  lazyLoadInit({
+    coverColor:"white",
+    offsetBottom:0,
+    offsetTopm:0,
+    showTime:1100,
+    onLoadBackEnd:function(i,e){
+
+    }
+    ,onLoadBackStart:function(i,e){
+
+    }
+  });
+</script>
+<script>
+    let is_open = 0
+  //cookie
+  let proofuser  = new Promise(function (resolve) {
+    $.get("/api/getUserInfo").done(function (data) {
+      if(data.login){
+        resolve(data)
+        userInfo = data
+        $('#list-link-head').attr('href','/'+data.login)
+        $('#viewpoint-link-head').attr('href','/user/viewPointList/'+data.login)
+        $('#header-bar-login').html('<div id="userAvatar-head" style="width: 40px;height: 40px;margin-top: -10px;"><img style="border-radius: 50%;" width="100%" src="'+data.avatar_url+'"></div>')
+        $("#userAvatar-head").click(function () {
+          if(is_open===0){
+            $('.arrow_box').show()
+            is_open = 1
+          }else{
+            $('.arrow_box').hide()
+            is_open = 0
+          }
+        })
+      }else{
+        $('#header-bar-login').html('<a onclick="location.href=\'/api/login?href=\'+location.href">join with Github</a>')
+      }
+    }).fail(function (e) {
+      $('#header-bar-login').html('<a onclick="location.href=\'/api/login?href=\'+location.href">join with Github</a>')
+    })
+  })
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+  var simplemde
+  var app = new Vue({
+    el: '#vue-comment-list',
+    data: {
+      list: [],
+      userInfo:null
+    },
+    mounted: function () {
+
+    },
+    methods:{
+      deleteById:function (id) {
+        $.get("/api/repo/comment/delete",{id:id},function (rep) {
+          if(rep.error==0){
+            toastr.success("delete success")
+            $.get("/api/repo/comment/findview", {repo: "Allyn69/kali-nethunter"}, function (back) {
+              app.list = back
+              if (back && back.length > 0)
+                $('#vue-comment-list').fadeIn()
+            })
+          }else{
+            toastr.warning(rep.errmsg)
+          }
+        })
+      }
+    }
+  })
+  proofuser.then(function (uf) {
+    app.userInfo = uf
+  })
+  $('.comments-viewpoints-add-box').click(function () {
+    simplemde = new SimpleMDE({
+      element: document.getElementById("editor"),
+      hideIcons: ["guide", "heading", "fullscreen", "side-by-side", "preview"],
+    });
+    $(this).hide()
+    $('.comments-editor').fadeToggle()
+  })
+  $(".comments-commit").click(function () {
+    if (simplemde.value() !== "Markdown here!") {
+      $.post("/api/repo/comment/submit",
+          {
+            repoCreaterAvatar:'https://avatars2.githubusercontent.com/u/46991653?v=4',
+            markData: simplemde.value(),
+            responseName: "Allyn69/kali-nethunter"
+          },
+          function (data) {
+            if (data.error == 0) {
+              toastr.success('success')
+              $.get("/api/repo/comment/findview", {repo: "Allyn69/kali-nethunter"}, function (back) {
+                app.list = back
+                if (back && back.length > 0)
+                  $('#vue-comment-list').fadeIn()
+              })
+            }else{
+              toastr.warning(data.errmsg)
+            }
+          })
+    }
+  })
+  // 初始化请求
+  $.get("/api/repo/comment/findview", {repo: "Allyn69/kali-nethunter"}, function (back) {
+    app.list = back
+    if (back && back.length > 0)
+      $('#vue-comment-list').fadeIn()
+  })
+</script>
+</body>
+</html>

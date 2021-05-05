@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.shawnlankton.com/xmlrpc.php">
+
+<title>Active Contour Matlab Code Demo | Shawn Lankton Online</title>
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Active Contour Matlab Code Demo" />
+<meta property="og:description" content="UPDATE: My new post: Sparse Field Active Contours implements quicker, more accurate active contours. Today, I added demo code for the Hybrid Segmentation project. This segmentation algorithm (in the publications section) can be used to find the boundary of objects in images. This approach uses localized statistics and sometimes gets better results than classic methods. For an example, see the video below: The contour begins as a rectangle, but deforms over time so that it finally forms the outline of the monkey. This can be used to segment many different classes of image. To try it out, download the demo" />
+<meta property="og:url" content="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/" />
+<meta property="og:site_name" content="Shawn Lankton Online" />
+<meta property="article:tag" content="active contours" />
+<meta property="article:tag" content="code" />
+<meta property="article:tag" content="computer vision" />
+<meta property="article:tag" content="Matlab" />
+<meta property="article:tag" content="paper" />
+<meta property="article:tag" content="segmentation" />
+<meta property="article:section" content="Academia" />
+<meta property="article:published_time" content="2008-04-07T18:00:38-04:00" />
+<meta property="article:modified_time" content="2017-07-05T15:29:00-04:00" />
+<meta property="og:updated_time" content="2017-07-05T15:29:00-04:00" />
+
+<!-- All in One SEO Pack 3.2.10 by Michael Torbert of Semper Fi Web Design[333,400] -->
+<meta name="description"  content="UPDATE: My new post: Sparse Field Active Contours implements quicker, more accurate active contours. Today, I added demo code for the Hybrid Segmentation" />
+
+<meta name="keywords"  content="active contours,code,computer vision,matlab,paper,segmentation" />
+
+<script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"http://www.shawnlankton.com/#organization","url":"http://www.shawnlankton.com/","name":"Shawn Lankton Online","sameAs":[]},{"@type":"WebSite","@id":"http://www.shawnlankton.com/#website","url":"http://www.shawnlankton.com/","name":"Shawn Lankton Online","publisher":{"@id":"http://www.shawnlankton.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"http://www.shawnlankton.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#webpage","url":"http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/","inLanguage":"en-US","name":"Active Contour Matlab Code Demo","isPartOf":{"@id":"http://www.shawnlankton.com/#website"},"datePublished":"2008-04-07T22:00:38+00:00","dateModified":"2017-07-05T19:29:00+00:00"},{"@type":"Article","@id":"http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#article","isPartOf":{"@id":"http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#webpage"},"author":{"@id":"http://www.shawnlankton.com/author/shawn/#author"},"headline":"Active Contour Matlab Code Demo","datePublished":"2008-04-07T22:00:38+00:00","dateModified":"2017-07-05T19:29:00+00:00","commentCount":"21","mainEntityOfPage":{"@id":"http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#webpage"},"publisher":{"@id":"http://www.shawnlankton.com/#organization"},"articleSection":"Academia, Projects, active contours, code, computer vision, Matlab, paper, segmentation"},{"@type":"Person","@id":"http://www.shawnlankton.com/author/shawn/#author","name":"Shawn Lankton","sameAs":[],"image":{"@type":"ImageObject","@id":"http://www.shawnlankton.com/#personlogo","url":"http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=96&d=identicon&r=g","width":96,"height":96,"caption":"Shawn Lankton"}}]}</script>
+<link rel="canonical" href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/" />
+<!-- All in One SEO Pack -->
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Shawn Lankton Online &raquo; Feed" href="http://www.shawnlankton.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Shawn Lankton Online &raquo; Comments Feed" href="http://www.shawnlankton.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Shawn Lankton Online &raquo; Active Contour Matlab Code Demo Comments Feed" href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/feed/" />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.10.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.10.0';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-1169303-2';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-1169303-2', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.shawnlankton.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.4"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='http://www.shawnlankton.com/wp-includes/css/dist/block-library/style.min.css?ver=5.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='http://www.shawnlankton.com/wp-content/themes/ixion/style.css?ver=5.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='ixion-style-css'  href='http://www.shawnlankton.com/wp-content/themes/ixion-child/style.css?ver=5.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='ixion-fonts-archivo-css'  href='//fonts.googleapis.com/css?family=Archivo+Narrow%3A400%2C400i%2C700%2C700i&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='ixion-fonts-cooper-css'  href='http://www.shawnlankton.com/wp-content/themes/ixion/assets/fonts/cooperhewitt.css' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='http://www.shawnlankton.com/wp-content/themes/ixion/assets/fonts/genericons/genericons/genericons.css?ver=5.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='easy-social-share-buttons-css'  href='http://www.shawnlankton.com/wp-content/plugins/easy-social-share-buttons3/assets/css/easy-social-share-buttons.min.css?ver=4.3' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"pdf,doc,ppt,xls,zip,docx,pptx,xlsx","inbound_paths":"[]","home_url":"http:\/\/www.shawnlankton.com","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.shawnlankton.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.10.0'></script>
+<link rel='https://api.w.org/' href='http://www.shawnlankton.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.shawnlankton.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.shawnlankton.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='A Short MEX Tutorial and Demo' href='http://www.shawnlankton.com/2008/03/getting-started-with-mex-a-short-tutorial/' />
+<link rel='next' title='Brain Science and Computer Vision' href='http://www.shawnlankton.com/2008/04/brain-science-and-computer-vision/' />
+<meta name="generator" content="WordPress 5.1.4" />
+<link rel='shortlink' href='http://www.shawnlankton.com/?p=318' />
+<link rel="alternate" type="application/json+oembed" href="http://www.shawnlankton.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.shawnlankton.com%2F2008%2F04%2Factive-contour-matlab-code-demo%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.shawnlankton.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.shawnlankton.com%2F2008%2F04%2Factive-contour-matlab-code-demo%2F&#038;format=xml" />
+<script type="text/javascript">
+	window._wp_rp_static_base_url = 'https://wprp.zemanta.com/static/';
+	window._wp_rp_wp_ajax_url = "http://www.shawnlankton.com/wp-admin/admin-ajax.php";
+	window._wp_rp_plugin_version = '3.6.4';
+	window._wp_rp_post_id = '318';
+	window._wp_rp_num_rel_posts = '6';
+	window._wp_rp_thumbnails = false;
+	window._wp_rp_post_title = 'Active+Contour+Matlab+Code+Demo';
+	window._wp_rp_post_tags = ['matlab', 'segmentation', 'active+contours', 'computer+vision', 'paper', 'code', 'projects', 'academia', 'algorithm', 'contour', 'rectangl', 'global', 'download', 'code', 'a', 'set', 'classic', 'optim', 'demo', 'video', 'project', 'activ', 'energi'];
+	window._wp_rp_promoted_content = false;
+</script>
+
+<script type="text/javascript">var essb_settings = {"ajax_url":"http:\/\/www.shawnlankton.com\/wp-admin\/admin-ajax.php","essb3_nonce":"4e05788bc8","essb3_plugin_url":"http:\/\/www.shawnlankton.com\/wp-content\/plugins\/easy-social-share-buttons3","essb3_facebook_total":true,"essb3_admin_ajax":false,"essb3_internal_counter":false,"essb3_stats":false,"essb3_ga":false,"essb3_ga_mode":"simple","essb3_counter_button_min":0,"essb3_counter_total_min":0,"blog_url":"http:\/\/www.shawnlankton.com\/","ajax_type":"wp","essb3_postfloat_stay":false,"essb3_no_counter_mailprint":false,"essb3_single_ajax":false,"twitter_counter":"self","post_id":318};</script>		<style type="text/css" id="wp-custom-css">
+			.site-title {
+	text-transform: none; 
+}
+.site-description-wrapper {
+	position: static;
+}
+.home h1.site-title {
+	color: white;
+	position: absolute;
+	top: 1.5em;
+}
+@media screen and (min-width: 50em) {
+	.site-description-wrapper {
+		position: absolute;
+	}
+	.home h1.site-title {
+	    color: white;
+    	margin-bottom: 2em;
+		position: relative;
+	}
+}
+.single-post .nav-links { display: none; }
+input#submit {
+    margin-top: 2.25em;
+    padding: 0.85em 1.2em 0.75em;
+    border-radius: 2px;
+    margin-left: -5px;
+}
+.page-template-front-page .entry-title {
+	margin-bottom: 0.8em;
+}
+@media screen and (min-width: 37.5em) {
+    .more-recent-posts {
+        top: auto;
+        bottom: 0;
+    }
+    .recent-posts-header .more-recent-posts {
+        top: 0;
+        bottom: auto;
+    }
+}
+blockquote {
+    background: #eeece8;
+    margin: 0;
+    padding: 32px 30px 1px;
+}
+
+		</style>
+		</head>
+
+<body class="post-template-default single single-post postid-318 single-format-standard singular has-cta-button has-description">
+<div id="page" class="site">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+    <header id="masthead" class="site-header" role="banner">
+
+        <div class="utility-container">
+                        
+<form role="search" method="get" class="search-form" action="http://www.shawnlankton.com/">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field"
+		placeholder="Search &hellip;"
+		value="" name="s"
+		title="Search for:" />
+		<span class="search-form-icon"></span>
+	</label>
+	<input type="submit" class="search-submit"
+		value="Search" />
+</form>
+        </div>
+
+                <div class="branding-container">
+            		<div class="site-branding">
+			
+								<p class="site-title"><a href="http://www.shawnlankton.com/" rel="home">Shawn Lankton Online</a></p>
+					</div><!-- .site-branding -->
+            <nav id="site-navigation" class="main-navigation" role="navigation">
+	<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">Menu</button>
+	<div class="menu-primary-container"><ul id="top-menu" class="menu"><li id="menu-item-1808" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1808"><a href="http://www.shawnlankton.com/featured/">Featured</a></li>
+<li id="menu-item-1717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1717"><a href="http://www.shawnlankton.com/resume/">My story</a></li>
+</ul></div></nav>
+        </div>
+        
+    </header>
+
+    
+    <div id="content" class="site-content">
+		<div class="entry-meta">
+			<span class="posted-on"><a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/" rel="bookmark"><time class="entry-date published" datetime="2008-04-07T18:00:38-04:00">April 7, 2008</time><time class="updated" datetime="2017-07-05T15:29:00-04:00">July 5, 2017</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="http://www.shawnlankton.com/author/shawn/">Shawn Lankton</a></span></span> <span class="cat-links"><a href="http://www.shawnlankton.com/category/academic/" rel="category tag">Academia</a>, <a href="http://www.shawnlankton.com/category/projects/" rel="category tag">Projects</a></span>					</div><!-- .entry-meta -->
+<h1 class="entry-title">Active Contour Matlab Code Demo</h1>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-318" class="post-318 post type-post status-publish format-standard hentry category-academic category-projects tag-active-contours tag-code tag-computer-vision tag-matlab tag-paper tag-segmentation no-featured-image">
+	<div class="entry-body">
+		<header class="entry-header">
+					</header>
+		<div class="entry-content">
+			<blockquote><p>
+<strong>UPDATE:</strong> <br />My new post: <a href="http://www.shawnlankton.com/2009/04/sfm-and-active-contours/">Sparse Field Active Contours</a><br /> implements quicker, more accurate active contours.
+</p></blockquote>
+<p>Today, I added demo code for the <a href="http://www.shawnlankton.com/2007/02/cool-hybrid-segmentation/">Hybrid Segmentation</a> project. This segmentation algorithm (in the <a href="http://www.shawnlankton.com/publications/">publications section</a>) can be used to find the boundary of objects in images.  This approach uses localized statistics and sometimes gets better results than classic methods.  For an example, see the video below:  The contour begins as a rectangle, but deforms over time so that it finally forms the outline of the monkey.</p>
+<p><center><object width="252" height="200"><param name="movie" value="http://www.youtube.com/v/9Kx4Wsylryw&#038;rel=0&#038;color1=0x234900&#038;color2=0x4e9e00&#038;hl=en"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/9Kx4Wsylryw&#038;rel=0&#038;color1=0x234900&#038;color2=0x4e9e00&#038;hl=en" type="application/x-shockwave-flash" wmode="transparent" width="252" height="200"></embed></object></center></p>
+<p>This can be used to segment many different classes of image.  To try it out, download the demo below and run &gt;&gt;localized_seg_demo</p>
+<blockquote><p><a href="http://www.shawnlankton.com/wp-content/uploads/files/hybridseg/localized_seg.zip">localized_seg.zip</a></p></blockquote>
+<p><center><object width="252" height="200"><param name="movie" value="http://www.youtube.com/v/H3P5N7ZfvEo&#038;rel=0&#038;color1=0x234900&#038;color2=0x4e9e00&#038;hl=en"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/H3P5N7ZfvEo&#038;rel=0&#038;color1=0x234900&#038;color2=0x4e9e00&#038;hl=en" type="application/x-shockwave-flash" wmode="transparent" width="252" height="200"></embed></object></center></p>
+<p>This code is based on a standard level set segmentation; it just optimizes a different energy.  I&#8217;ve also made a demo which implements the well-known Chan-Vese segmentation algorithm.  This technique is similar to the one above, but it looks at global statistics.  This makes it more robust to initialization, but it also means that more constraints are placed on the image.  Download it and see what you think!  Again, unzip the file and run &gt;&gt;region_seg_demo</p>
+<blockquote><p><a href="http://www.shawnlankton.com/wp-content/uploads/files/sfm_chanvese_demo.zip">sfm_chanvese_demo.zip</a> (New! <a href="http://www.shawnlankton.com/2009/04/sfm-and-active-contours/">Described Here</a>)<br />
+<del datetime="2009-07-02T18:20:17+00:00"><a href="http://www.shawnlankton.com/wp-content/uploads/files/regionbased_seg.zip">regionbased_seg.zip</a></del> (old and slow)</p></blockquote>
+<p>This code can be used according to the <a href="https://opensource.org/licenses/MIT">MIT license</a>.  As long as this work is appropriately cited and attributed, and not being used for proprietary or commercial purposes, I&#8217;m fully supportive of you using it.  Please drop me a line if it helps you!</p>
+
+<div class="wp_rp_wrap  wp_rp_plain" id="wp_rp_first"><div class="wp_rp_content"><h3 class="related_post_title">You may also like:</h3><ul class="related_post wp_rp"><li data-position="0" data-poid="in-390" data-post-type="none" ><a href="http://www.shawnlankton.com/2009/04/sfm-and-active-contours/" class="wp_rp_title">Sparse Field Active Contours</a></li><li data-position="1" data-poid="in-332" data-post-type="none" ><a href="http://www.shawnlankton.com/2007/05/active-contours/" class="wp_rp_title">Active Contours</a></li><li data-position="2" data-poid="in-309" data-post-type="none" ><a href="http://www.shawnlankton.com/2008/03/growcut-segmentation-in-matlab/" class="wp_rp_title">GrowCut Segmentation In Matlab</a></li><li data-position="3" data-poid="in-449" data-post-type="none" ><a href="http://www.shawnlankton.com/2009/07/fast-active-contours/" class="wp_rp_title">Making Active Contours Fast</a></li><li data-position="4" data-poid="in-107" data-post-type="none" ><a href="http://www.shawnlankton.com/2007/02/cool-hybrid-segmentation/" class="wp_rp_title">Hybrid Segmentation</a></li><li data-position="5" data-poid="in-281" data-post-type="none" ><a href="http://www.shawnlankton.com/2007/12/3d-vision-with-stereo-disparity/" class="wp_rp_title">3D Vision with Stereo Disparity</a></li></ul></div></div>
+<div class="essb_links essb_displayed_bottom essb_share essb_template_metro-retina essb_1710848735 print-no" id="essb_displayed_bottom_1710848735" data-essb-postid="318" data-essb-position="bottom" data-essb-button-style="button" data-essb-template="metro-retina" data-essb-counter-pos="hidden" data-essb-url="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/" data-essb-twitter-url="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/" data-essb-instance="1710848735"><ul class="essb_links_list"><li class="essb_item essb_link_facebook nolightbox"> <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/&t=Active+Contour+Matlab+Code+Demo&redirect_uri=http://www.shawnlankton.com?sharing-thankyou=yes" title="" onclick="essb_window(&#39;https://www.facebook.com/sharer/sharer.php?u=http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/&t=Active+Contour+Matlab+Code+Demo&redirect_uri=http://www.shawnlankton.com?sharing-thankyou=yes&#39;,&#39;facebook&#39;,&#39;1710848735&#39;); return false;" target="_blank" rel="nofollow" ><span class="essb_icon essb_icon_facebook"></span><span class="essb_network_name">Share</span></a></li><li class="essb_item essb_link_twitter nolightbox"> <a href="#" title="" onclick="essb_window(&#39;https://twitter.com/intent/tweet?text=Active+Contour+Matlab+Code+Demo&amp;url=http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/&amp;counturl=http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/&amp;related=shawnlankton&amp;via=shawnlankton&#39;,&#39;twitter&#39;,&#39;1710848735&#39;); return false;" target="_blank" rel="nofollow" ><span class="essb_icon essb_icon_twitter"></span><span class="essb_network_name">Tweet</span></a></li><li class="essb_item essb_link_linkedin nolightbox"> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=EasySocialShareButtons&amp;title=Active+Contour+Matlab+Code+Demo&amp;url=http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/" title="" onclick="essb_window(&#39;https://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=EasySocialShareButtons&amp;title=Active+Contour+Matlab+Code+Demo&amp;url=http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/&#39;,&#39;linkedin&#39;,&#39;1710848735&#39;); return false;" target="_blank" rel="nofollow" ><span class="essb_icon essb_icon_linkedin"></span><span class="essb_network_name">Share</span></a></li></ul></div>		</div><!-- .entry-content -->
+
+			<footer class="entry-footer">
+		<span class="tags-links">Tagged <a href="http://www.shawnlankton.com/tag/active-contours/" rel="tag">active contours</a>, <a href="http://www.shawnlankton.com/tag/code/" rel="tag">code</a>, <a href="http://www.shawnlankton.com/tag/computer-vision/" rel="tag">computer vision</a>, <a href="http://www.shawnlankton.com/tag/matlab/" rel="tag">Matlab</a>, <a href="http://www.shawnlankton.com/tag/paper/" rel="tag">paper</a>, <a href="http://www.shawnlankton.com/tag/segmentation/" rel="tag">segmentation</a></span>	</footer><!-- .entry-footer -->
+		
+<div class="entry-author">
+	<div class="author-avatar">
+		<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=60&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=120&#038;d=identicon&#038;r=g 2x' class='avatar avatar-60 photo' height='60' width='60' />	</div><!-- .author-avatar -->
+
+	<div class="author-heading">
+		<h2 class="author-title">Published by <span class="author-name">Shawn Lankton</span></h2>
+	</div><!-- .author-heading -->
+
+	<p class="author-bio">
+		Most recently, Shawn led sales and marketing at Diligent Corporation where he participated in a $624M exit in 2016. In his role, he rapidly created a high-functioning and efficient revenue engine that quadrupled revenue growth while halving CAC. Before Diligent, he founded the "fast growth tech" practice at McKinsey &amp; Co, through which he consulted with SaaS companies from $20 to $250M in ARR. At McKinsey, he was known for his expertise in enterprise sales, marketing, pricing, and growth strategy. Shawn earned his Ph.D. in electrical engineering and computer vision from Georgia Tech.		<a class="author-link" href="http://www.shawnlankton.com/author/shawn/" rel="author">
+			View all posts by Shawn Lankton		</a>
+	</p><!-- .author-bio -->
+</div><!-- .entry-auhtor -->
+	</div> <!-- .entry-body -->
+</article><!-- #post-## -->
+
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			21 thoughts on &ldquo;<span>Active Contour Matlab Code Demo</span>&rdquo;		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-320" class="comment even thread-even depth-1">
+			<article id="div-comment-320" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://1.gravatar.com/avatar/dd8d75016afdd12b2cf381913edaac08?s=50&#038;d=identicon&#038;r=g' srcset='http://1.gravatar.com/avatar/dd8d75016afdd12b2cf381913edaac08?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">zhang le</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-320">
+							<time datetime="2008-06-24T07:11:02-04:00">
+								June 24, 2008 at 7:11 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>It seems works well on your special photo.It doesn&#8217;t output a satisfy result on my photo.I will do some study on your code&#8230;</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-321" class="comment byuser comment-author-shawn bypostauthor odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-321" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn"><a href='http://www.shawnlankton.com' rel='external nofollow' class='url'>Shawn Lankton</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-321">
+							<time datetime="2008-06-27T21:04:26-04:00">
+								June 27, 2008 at 9:04 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Also, it is true that this technique doesn&#8217;t work well on all images.  Consider some of the other segmentation techniques I show [<a href="http://www.shawnlankton.com/?s=segmentation" rel="nofollow">here</a>] as well as many others in the computer vision literature!</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-400" class="comment even thread-even depth-1">
+			<article id="div-comment-400" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/f9158c9c045a2a793d5d3cd145be1786?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/f9158c9c045a2a793d5d3cd145be1786?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">vahid</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-400">
+							<time datetime="2008-12-16T06:26:11-04:00">
+								December 16, 2008 at 6:26 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>hi<br />
+dear<br />
+i am msc student in iran<br />
+i want many code about snake and level set for lip tracking<br />
+thanks</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-401" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-401" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://1.gravatar.com/avatar/d2e8b2b9a9d4e158deaf6727d9bd8c0d?s=50&#038;d=identicon&#038;r=g' srcset='http://1.gravatar.com/avatar/d2e8b2b9a9d4e158deaf6727d9bd8c0d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">xiaochunlei</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-401">
+							<time datetime="2008-12-19T09:20:07-04:00">
+								December 19, 2008 at 9:20 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Your methods doesn&#8217;t work well on other iamges and they cost a lot of time. Is there exist some methods to speed up?Looking forward your new improved!</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-424" class="comment even thread-even depth-1">
+			<article id="div-comment-424" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://1.gravatar.com/avatar/189becb36bd0acb8efcb710fdbf9585d?s=50&#038;d=identicon&#038;r=g' srcset='http://1.gravatar.com/avatar/189becb36bd0acb8efcb710fdbf9585d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">khusairy</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-424">
+							<time datetime="2009-02-06T06:58:14-04:00">
+								February 6, 2009 at 6:58 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>its a good code but what is alpha in the program coz i didn&#8217;t find any alpha value when i go through chan vese formulation is the alpha refer to lamda in Chan vese</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-425" class="comment byuser comment-author-shawn bypostauthor odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-425" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn"><a href='http://www.shawnlankton.com' rel='external nofollow' class='url'>Shawn Lankton</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-425">
+							<time datetime="2009-02-06T11:06:07-04:00">
+								February 6, 2009 at 11:06 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>khusairy:  Yes, \alpha = \lambda in this case.  Just a simple matter of swapped notation.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-426" class="comment even thread-even depth-1">
+			<article id="div-comment-426" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://2.gravatar.com/avatar/ee4e7ed1f433283c86e5e981f15c3d73?s=50&#038;d=identicon&#038;r=g' srcset='http://2.gravatar.com/avatar/ee4e7ed1f433283c86e5e981f15c3d73?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">Med</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-426">
+							<time datetime="2009-02-10T14:10:50-04:00">
+								February 10, 2009 at 2:10 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Lankton</p>
+<p>Thank you for all these codes very useful.<br />
+I have a question concerning the Chan&amp;Vese code. I did not check other implementations, but I wanted to know whay have you used this:<br />
+F./max(abs(F))<br />
+is it for normalization ?<br />
+I want to add another shape prior term, do you think it is preferable I add it to F, then it&#8217;s gonna be normalized by this form (F./max(abs(F))) or add it directly to the hole Energu F with an onther coefficient, beta, as alpha..??</p>
+<p>Thanks!</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-428" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-428" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/f48e7487281ac91002dfb6f1223183d2?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/f48e7487281ac91002dfb6f1223183d2?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">khusairy</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-428">
+							<time datetime="2009-02-16T09:40:14-04:00">
+								February 16, 2009 at 9:40 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Shawn</p>
+<p> it&#8217;s me again i think the alpha in you program is not lambda but u which as in the equation u*Length(C)</p>
+<p>correct me if i&#8217;m wrong, thx in advance</p>
+<p>regards</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-438" class="comment even thread-even depth-1">
+			<article id="div-comment-438" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://2.gravatar.com/avatar/884434207fa048e51ff13411027fb077?s=50&#038;d=identicon&#038;r=g' srcset='http://2.gravatar.com/avatar/884434207fa048e51ff13411027fb077?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">Elliot</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-438">
+							<time datetime="2009-03-05T06:01:02-04:00">
+								March 5, 2009 at 6:01 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>hi Shawn<br />
+it is cool of you to share so many codes.they&#8217;re very useful.But,there seems something wrong in your codes on the documemt localized_seg. i try my best to find the errors(listed as follows),but fail.so put it here .looking forward to your reply,thanks!<br />
+&#8230;&#8230;<br />
+Error in ==&gt; imshow at 85<br />
+[cdata, cdatamapping, clim, map, xdata, ydata, filename, &#8230;</p>
+<p>Error in ==&gt; localized_seg&gt;showCurveAndPhi at 136<br />
+  imshow(I,&#8217;displayrange&#8217;,[0 255]); hold on;</p>
+<p>Error in ==&gt; localized_seg at 116<br />
+      showCurveAndPhi(I,phi,its);  </p>
+<p>Error in ==&gt; localized_seg_demo at 19<br />
+seg = localized_seg(I, m, 400);  %&#8211; run segmentation</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-486" class="comment byuser comment-author-shawn bypostauthor odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-486" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn"><a href='http://www.shawnlankton.com' rel='external nofollow' class='url'>Shawn Lankton</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-486">
+							<time datetime="2009-04-29T09:57:54-04:00">
+								April 29, 2009 at 9:57 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I think you can correct this problem by re-writing the showCurveAndPhi function.  imshow in older versions of Matlab do not handle all of the argument options that imshow has in newer versions.  You could just use:<br />
+imshow(I);<br />
+instead of:<br />
+imshow(I,&#8217;displayrange,'[0 255]);<br />
+and it should work.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-496" class="comment even thread-even depth-1">
+			<article id="div-comment-496" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/c4019c78275bed23ab542307e4881243?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/c4019c78275bed23ab542307e4881243?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">raman</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-496">
+							<time datetime="2009-05-05T08:39:13-04:00">
+								May 5, 2009 at 8:39 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I want to use the Active Contour Toolbox, but I&#8217;m currently having Matlab 7.1 sp1. The Active contour toolbox says it works with newer versions only. Which version should I buy??</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-569" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-569" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=50&#038;d=identicon&#038;r=g' srcset='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">Mewada Hiren K</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-569">
+							<time datetime="2009-07-06T05:24:29-04:00">
+								July 6, 2009 at 5:24 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>In your paper &#8220;localizing region  based active Contours, you did not define the kernal which is utilized for histogram separation energy measurement. So can you guide me some detaio in that algorithm&#8230;.<br />
+Thanking You,</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-573" class="comment byuser comment-author-shawn bypostauthor even thread-even depth-1">
+			<article id="div-comment-573" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn"><a href='http://www.shawnlankton.com' rel='external nofollow' class='url'>Shawn Lankton</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-573">
+							<time datetime="2009-07-06T09:53:24-04:00">
+								July 6, 2009 at 9:53 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>You can use any smoothing kernel you like.  In my case, I used a Gaussian smoothing kernel with a standard deviation of 5.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-709" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-709" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=50&#038;d=identicon&#038;r=g' srcset='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">Mewada Hiren K</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-709">
+							<time datetime="2009-07-11T04:20:56-04:00">
+								July 11, 2009 at 4:20 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Sir,  i tried to designe code based on histogram separation energy and that part added as third method in your given code i.e. 1st is CV model, 2nd is Yezzi model and 3rd is i my design code, as below:<br />
+Jin=I(upts); Hin=hist(Jin);Pin=Hin/length(Jin);, Similarly for exterior part i calculate the probabilty of pixel with in radius of defined circle.<br />
+Function is : Bhattachrya Coefficient B= sum(sqrt(Pin(:),Pout(:)));<br />
+t11= B*(1/Ain&#8217;-1/Aout&#8217;)); t21= K*(255-I(idx)); t22= (sqrt(Pout/Pin))/Ain&#8217;-(sqrt(Pin/Pout))/Aout&#8217;<br />
+F=-(u-v)*(t11+t21*t22);<br />
+but i am not gettting the result.. So it what wrong i am doing?<br />
+Thank You Sir,,</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-720" class="comment byuser comment-author-shawn bypostauthor even thread-even depth-1">
+			<article id="div-comment-720" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn"><a href='http://www.shawnlankton.com' rel='external nofollow' class='url'>Shawn Lankton</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-720">
+							<time datetime="2009-07-11T11:16:29-04:00">
+								July 11, 2009 at 11:16 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p><a href="#comment-709" rel="nofollow">@Mewada Hiren K </a><br />
+You should first implement the global Bhattacharyya (Histogram Separation) energy.  This is described well in the <a href="http://scholar.google.com/scholar?cluster=3683420255925336629&#038;hl=en" rel="nofollow">paper by Michailovich et. al.</a></p>
+<p>Localization is a snap once you have the global version working : )</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-886" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-886" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=50&#038;d=identicon&#038;r=g' srcset='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">Mewada Hiren K</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-886">
+							<time datetime="2009-07-22T13:55:44-04:00">
+								July 22, 2009 at 1:55 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Dear Sir,<br />
+i have successfully modified your program for histogram separation based image segmentation. But it takes much time execution. Another thing i want to ask is what are the limitation of your algorithm , so that it is not segmentating object succesfully for other images. I tried much , but i could not get the answer. One request is i am also doing work in the same field. what next i can do, will please guide me.</p>
+<p>Thanking You</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-887" class="comment byuser comment-author-shawn bypostauthor even thread-even depth-1">
+			<article id="div-comment-887" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn"><a href='http://www.shawnlankton.com' rel='external nofollow' class='url'>Shawn Lankton</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-887">
+							<time datetime="2009-07-22T13:58:30-04:00">
+								July 22, 2009 at 1:58 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p><a href="#comment-886" rel="nofollow">@Mewada Hiren K </a><br />
+Great, good work.  The execution time is a drawback of the histogram separation energy.  I plan to release new codes soon which will be much faster than the implementation you are using.  </p>
+<p>The paper discusses some of the limitations of the algorithm.  From experimenting it seems that it works best in medical applications where the contour can be initialized close to the object.  For processing natural images, automatic selection of the localization radius is a challenge that is still an open question.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-1061" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-1061" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=50&#038;d=identicon&#038;r=g' srcset='http://1.gravatar.com/avatar/ae9c43b2aff6f524f782e468532f9fd8?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">Mewada Hiren K</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-1061">
+							<time datetime="2009-08-17T09:34:49-04:00">
+								August 17, 2009 at 9:34 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Earlier i asked about the histogram separation energy in your program of Local region based image segmentation , but if i want to change the Heaviside function , then how can i do in your program , because i don&#8217;t find the function for heaviside that is mentioned as in your paper.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-1062" class="comment byuser comment-author-shawn bypostauthor even thread-even depth-1">
+			<article id="div-comment-1062" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/cf2d3c3728fcd78a627f70ec57a3343d?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn"><a href='http://www.shawnlankton.com' rel='external nofollow' class='url'>Shawn Lankton</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-1062">
+							<time datetime="2009-08-17T09:37:10-04:00">
+								August 17, 2009 at 9:37 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>In my implementations, I typically use $\epsilon=0$.  In that case, the Heaviside function is simply 1-sign($\phi$).  That cuts down on quite a few computations.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-1093" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-1093" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='http://0.gravatar.com/avatar/3c20983656762f1cbf5a9360b74c6fb1?s=50&#038;d=identicon&#038;r=g' srcset='http://0.gravatar.com/avatar/3c20983656762f1cbf5a9360b74c6fb1?s=100&#038;d=identicon&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />						<b class="fn">Yossi</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/#comment-1093">
+							<time datetime="2009-09-01T03:08:49-04:00">
+								September 1, 2009 at 3:08 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Dear Mewada,<br />
+Could you please share your modified program (with the histogram energy)?<br />
+I guess it will save me a lot of time.<br />
+Thanking you in advance,<br />
+Regards<br />
+<a href="#comment-886" rel="nofollow">@Mewada Hiren K  </a></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-37203" class="trackback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://effieconnery.soup.io/?sessid=11a35c42f0229da7f11c243c8eb1b74d' rel='external nofollow' class='url'>does laser hair growth treatment work</a> 			</div>
+		</li><!-- #comment-## -->
+		</ol>
+		
+		<p class="no-comments">Comments are closed.</p>
+	
+</div><!-- #comments -->
+
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="http://www.shawnlankton.com/2008/03/getting-started-with-mex-a-short-tutorial/" rel="prev">A Short MEX Tutorial and Demo</a></div><div class="nav-next"><a href="http://www.shawnlankton.com/2008/04/brain-science-and-computer-vision/" rel="next">Brain Science and Computer Vision</a></div></div>
+	</nav>
+		</main>
+	</div>
+
+<aside id="secondary" class="widget-area" role="complementary">
+	<section id="categories-4" class="widget widget_categories"><h2 class="widget-title">Topics</h2>		<ul>
+				<li class="cat-item cat-item-5"><a href="http://www.shawnlankton.com/category/academic/" >Academia</a> (47)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.shawnlankton.com/category/business/" title="Business and entrepreneurship. ">Business</a> (23)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.shawnlankton.com/category/vision/" >Computer Vision</a> (12)
+</li>
+	<li class="cat-item cat-item-75"><a href="http://www.shawnlankton.com/category/consulting-2/" title="Tips, tricks, and tools that relate to my years as a management consultant">Consulting</a> (14)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.shawnlankton.com/category/tips/" >Life Hacks</a> (38)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.shawnlankton.com/category/projects/" >Projects</a> (14)
+</li>
+		</ul>
+			</section></aside>
+
+	</div>
+	<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="footer-widgets clear">
+		<div class="widget-areas">
+							<div class="widget-area">
+					<section id="meta-3" class="widget widget_meta"><h2 class="widget-title">Meta</h2>			<ul>
+						<li><a href="http://www.shawnlankton.com/wp-login.php">Log in</a></li>
+			<li><a href="http://www.shawnlankton.com/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.shawnlankton.com/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</section>				</div><!-- .widget-area -->
+			
+			
+			
+					</div><!-- .widget-areas -->
+	</div><!-- .footer-widgets -->
+		<div class="site-info">
+	<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+	<span class="sep"> | </span>
+	Theme: Ixion by <a href="http://automattic.com/" rel="designer">Automattic</a>.</div><!-- .site-info -->	</footer>
+</div>
+<script type='text/javascript' src='http://www.shawnlankton.com/wp-content/themes/ixion/assets/js/navigation.js?ver=20151215'></script>
+<script type='text/javascript' src='http://www.shawnlankton.com/wp-content/themes/ixion/assets/js/skip-link-focus-fix.js?ver=20151215'></script>
+<script type='text/javascript' src='http://www.shawnlankton.com/wp-includes/js/wp-embed.min.js?ver=5.1.4'></script>
+<link rel="stylesheet" id="essb-cct-style"  href="http://www.shawnlankton.com/wp-content/plugins/easy-social-share-buttons3/lib/modules/click-to-tweet/assets/css/styles.css" type="text/css" media="all" /><script type="text/javascript">var essb_window = function(oUrl, oService, oInstance) { var element = jQuery('.essb_'+oInstance); var instance_post_id = jQuery(element).attr("data-essb-postid") || ""; var instance_position = jQuery(element).attr("data-essb-position") || ""; var wnd; var w = 800 ; var h = 500; if (oService == "twitter") { w = 500; h= 300; } var left = (screen.width/2)-(w/2); var top = (screen.height/2)-(h/2); if (oService == "twitter") { wnd = window.open( oUrl, "essb_share_window", "height=300,width=500,resizable=1,scrollbars=yes,top="+top+",left="+left ); } else { wnd = window.open( oUrl, "essb_share_window", "height=500,width=800,resizable=1,scrollbars=yes,top="+top+",left="+left ); } if (typeof(essb_settings) != "undefined") { if (essb_settings.essb3_stats) { if (typeof(essb_handle_stats) != "undefined") { essb_handle_stats(oService, instance_post_id, oInstance); } } if (essb_settings.essb3_ga) { essb_ga_tracking(oService, oUrl, instance_position); } } essb_self_postcount(oService, instance_post_id); if (typeof(essb_abtesting_logger) != "undefined") { essb_abtesting_logger(oService, instance_post_id, oInstance); } var pollTimer = window.setInterval(function() { if (wnd.closed !== false) { window.clearInterval(pollTimer); essb_smart_onclose_events(oService, instance_post_id); } }, 200); }; var essb_self_postcount = function(oService, oCountID) { if (typeof(essb_settings) != "undefined") { oCountID = String(oCountID); jQuery.post(essb_settings.ajax_url, { 'action': 'essb_self_postcount', 'post_id': oCountID, 'service': oService, 'nonce': essb_settings.essb3_nonce }, function (data) { if (data) { }},'json'); } }; var essb_smart_onclose_events = function(oService, oPostID) { if (oService == "subscribe" || oService == "comments") return; if (typeof (essbasc_popup_show) == 'function') { essbasc_popup_show(); } if (typeof essb_acs_code == 'function') { essb_acs_code(oService, oPostID); } if (typeof(after_share_easyoptin) != "undefined") { essb_toggle_subscribe(after_share_easyoptin); } }; var essb_tracking_only = function(oUrl, oService, oInstance, oAfterShare) { var element = jQuery('.essb_'+oInstance); if (oUrl == "") { oUrl = document.URL; } var instance_post_id = jQuery(element).attr("data-essb-postid") || ""; var instance_position = jQuery(element).attr("data-essb-position") || ""; if (typeof(essb_settings) != "undefined") { if (essb_settings.essb3_stats) { if (typeof(essb_handle_stats) != "undefined") { essb_handle_stats(oService, instance_post_id, oInstance); } } if (essb_settings.essb3_ga) { essb_ga_tracking(oService, oUrl, instance_position); } } essb_self_postcount(oService, instance_post_id); if (oAfterShare) { essb_smart_onclose_events(oService, instance_post_id); } }; var essb_pinterest_picker = function(oInstance) { essb_tracking_only('', 'pinterest', oInstance); var e=document.createElement('script'); e.setAttribute('type','text/javascript'); e.setAttribute('charset','UTF-8'); e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e); };</script>
+</body>
+</html>
